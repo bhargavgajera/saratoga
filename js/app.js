@@ -201,13 +201,24 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 
 
             $rootScope.$on('$cordovaPush:notificationReceived', function (event, notification) {
+                
+                console.log("event")
+               console.log(event);
+               console.log("ios notification")
+               console.log(notification);
+                
+                
                 if (notification.alert) {
-                    navigator.notification.alert(notification.alert);
+                   // navigator.notification.alert(notification.alert);
+                    $ionicPopup.alert({
+                        title: 'Notification',
+                        template: notification.alert
+                    });
                 }
 
                 if (notification.sound) {
-                    var snd = new Media(event.sound);
-                    snd.play();
+                   // var snd = new Media(event.sound);
+                   // snd.play();
                 }
 
                 if (notification.badge) {
@@ -217,6 +228,26 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         // An error occurred. Show a message to the user
                     });
                 }
+                
+                
+                if (notification.link != "") {
+                        document.location.hash = notification.link;
+                    } else if (window.localStorage.getItem("userData") == null) {
+                        document.location.hash = "#/app/notifications";
+                    } else {
+                        document.location.hash = "#/home";
+                    }
+                    
+                    
+                    if (notification.externallink != "") {
+                        console.log("click on push notification in ios : "+ notification.externallink)
+                        window.open(notification.externallink, '_system');
+                    }
+                
+                
+                
+                
+                
             });
     }
 })

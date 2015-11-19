@@ -1771,8 +1771,12 @@ angular.module('saratoga.controllers', [])
         }
         
         if (note.externallink)
-        {     
+        {    
+             console.log(note.externallink);
+         
             window.open(note.externallink, '_system');
+         
+            
             note.is_read = true
         }
         
