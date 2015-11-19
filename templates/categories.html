@@ -1,0 +1,16 @@
+<ion-view title="Categories" >
+    <ion-pane class="categories-page">
+         <ion-content class="has-header">
+             <div ng-repeat="menu in categories">
+            <ion-list class="item align-right dark-shade" style="background-image:url({{menu.image}})" ng-init="val=false" ng-click="toggleGroup(menu)" >
+                <h2 class="light padding-bottom ">{{menu.title}}</h2>
+            </ion-list>
+                 
+             <div class="item-body item-accordion" ng-show="menu.show">
+                 <a class="item " ng-repeat="submenu in menu.submenu" href="#/app/members/{{submenu.id}}"><h2>{{submenu.title}} </h2></a>
+             </div>
+                 </div>
+            
+        </ion-content>
+    </ion-pane>
+</ion-view>

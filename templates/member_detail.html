@@ -1,0 +1,110 @@
+<ion-view title="">
+    <ion-pane class="detail-page">
+        <ion-content class="has-header">
+            <div class="member-profile" ng-class="{loaded:'loaded'}">
+            <div class="mamber-pic">
+                <div class="image-wrapper">
+                    <div class="image-block" style="background-image:url({{memberData.logo || 'img/noimage.jpg' }})">
+                        
+                    </div>
+                </div>
+
+                <h3 ng-bind-html="memberData.title"></h3>
+                <h5>{{memberData.catname}} <span ng-hide="!memberData.catname || !memberData.subcatname">></span> {{memberData.subcatname}}</h5>
+            </div>
+            <div class="button-bar padding-left-10 padding-right-10">
+                <a class="button icon-top ion-ios-people button-royal no-radius no-border">{{memberData.total_favorite}} Followers</a>
+                <a class="button icon-top button-calm no-border " ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[memberData.favorite]" ng-click="checkfav()">Favorite</a>
+                <a class="button icon-top ion-ios-location button-royal no-radius no-border" ng-click="gotoMap(memberData.lat,memberData.lng,memberData.title,memberData.address)">Map</a>
+            </div>
+                
+            <div class="button-bar padding-left-10 padding-right-10">
+                <a class="button icon-top ion-compose button-calm no-radius no-border" ng-click="showcomment = true">{{memberData.total_comment}} Comments</a>
+                <a class="button icon-top ion-android-share button-royal no-border" ng-click="shareLink(memberData.title,memberData.share_url)">Share</a>
+                <a class="button icon-top ion-ios-albums-outline button-calm no-radius no-border" ng-click="showcomment = false">Member Details</a>
+            </div>
+            <div class="content padding-10" ng-hide="showcomment">
+            
+            <div class="box-image" ng-show="memberData.featured_image"><img src="{{memberData.featured_image}}" alt=""></div>
+                
+                
+                <div class="contact-detail">
+                    <div class="row" ng-if="memberData.contact_fullname">
+                        <div class="col col-50">Contact :</div>
+                        <div class="col col-50">{{memberData.contact_fullname}}</div>
+                    </div>
+                    <div class="row" ng-if="memberData.address">
+                        <div class="col col-50">Address :</div>
+                        <div class="col col-50">{{memberData.address}}</div>
+                    </div>
+                    <div class="row" ng-if="memberData.phone">
+                        <div class="col col-50">Phone :</div>
+                        <div class="col col-50">{{memberData.phone}}</div>
+                    </div>
+                    
+                    <div class="row" ng-if="memberData.contact_email">
+                        <div class="col col-50">Email :</div>
+                        <div class="col col-50"><a href="#" class="calm" ng-click="openLink('mailto:{{memberData.contact_email}}')">{{memberData.contact_email}}</a></div>
+                    </div>
+                    <div class="row" ng-if="memberData.weburl">
+                        <div class="col col-50">Website :</div>
+                        <div class="col col-50"><a href="#" class="calm" ng-click="openLink('http://developmentbox.co/saratoga/referral?member={{memberId}}')" target="_blank">{{memberData.weburl}}</a></div>
+                        <div class="col col-50"></div>
+                    </div>
+                    <div class="row social">
+                        <div class="col col-50">Social :</div>
+                        <div class="col col-50">
+                            <a  href="#" ng-click="openLink('{{memberData.social_site.facebook}}')" ng-if="memberData.social_site.facebook" target="_blank" class="icon ion-social-facebook"></a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.twitter}}')" ng-if="memberData.social_site.twitter"  target="_blank" class="icon ion-social-twitter"></a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.googleplus}}')" ng-if="memberData.social_site.googleplus"  target="_blank" class="icon ion-social-googleplus"></a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.pinterest}}')" ng-if="memberData.social_site.pinterest"  target="_blank" class="icon ion-social-pinterest"></a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.instagram}}')" ng-if="memberData.social_site.instagram"  target="_blank" class="icon ion-social-instagram"></a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.youtube}}')" ng-if="memberData.social_site.youtube"  target="_blank" class="icon ion-social-youtube"></a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.tripadvisor}}')" ng-if="memberData.social_site.tripadvisor"  target="_blank" class="text">Tripadvisor</a>
+                            <a href="#" ng-click="openLink('{{memberData.social_site.opentable}}')" ng-if="memberData.social_site.opentable"  target="_blank" class="text">Open Table</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="member_detail" ng-bind-html="memberData.content"></div>
+            </div>
+            <div class="comments" ng-show="showcomment">
+            <ion-list>
+                <div class="list-wrapper" ng-repeat="comment in memberData.comments track by $index" >
+                    <ion-item class="item item-divider uppercase" ng-bind="comment.date" ng-if="checkDate(comment.date,$index)"></ion-item>
+                
+                    <ion-item class="item item-avatar item-text-wrap" ng-if="	
+comment.type == 'comment'">
+                    <img width="35" height="35" ng-src="{{comment.author_avtar || 'img/noimage.jpg' }}">
+                    <h2><strong>{{comment.author}}</strong> <span class="assertive">@{{comment.user_name}}</span> <time class="uppercase">{{comment.time}}</time></h2>
+                    {{comment.content}}
+                </ion-item>
+                    
+                <ion-item class="item item-avatar item-icon-right item-text-wrap" ng-class="{'has-image':comment.event_thumb}"  ng-href="{{comment.pageurl || ''}}"  ng-if="	
+comment.type == 'notification'">
+                    <img ng-src="{{comment.avtar || img/noimage.jpg}}" ng-class="{'read':comment.	
+is_read}">
+                    <h3 ng-bind-html="comment.title"></h3>
+                    <p ng-bind="comment.message" ng-if="comment.message"></p>
+                    <p class="time"> <i class="ion-android-time"></i> <span ng-bind="timestamp(comment.notification_date)"></span></p>
+                    <img class="box-img" width="60" ng-class="{'read':comment.	
+is_read}" ng-src="{{comment.event_thumb}}" ng-if="comment.event_thumb" alt="">
+                    <i ng-if="comment.pageurl" class="icon ion-ios-arrow-forward  assertive"></i>
+                </ion-item>    
+                    
+                    
+                    
+            </div>
+                 <ion-item ng-if="memberData.comments.length < 1">
+                    No any Comments<br> Be the first to comment.
+                </ion-item>
+            </ion-list>
+                
+                
+                
+                
+                <button class="button button-royal button-full no-margin no-radius" type="submit" ng-click="newComment()"><i class="icon ion-compose"></i></button>          
+            </div>
+                </div>
+        </ion-content>
+    </ion-pane>
+</ion-view>

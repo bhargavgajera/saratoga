@@ -1,0 +1,41 @@
+<ion-view title="Weather" class="listing-page">
+
+    <ion-pane>
+        <ion-content has-bouncing="false" class="has-footer weather-content">
+             <div class="weather-page" ng-class="{loaded:'loaded'}">
+                <i class="prev arrow icon ion-ios-arrow-left" ng-click="slidePrev()" ng-class="{disabled:hideprev}"></i>
+                <i class="next arrow icon ion-ios-arrow-right" ng-click="slideNext()" ng-class="{disabled:hidenext}"></i>
+            <ion-slide-box class="weather-slider" show-pager="false" on-slide-changed="slideChanged(index)">
+                
+                <ion-slide ng-repeat="slide in weatherReport.item.forecast">
+                    <div class="slide">
+                        <div class="box">
+                            <h4 ng-bind="slide.date" class="royal"></h4>
+                            <i class="wi assertive weather-icon" ng-class="setIcon(slide.text)" ></i>
+                           <!-- ng-class="{Cloudy:'wi-cloudy','Mostly Cloudy':'wi-cloudy', Thunderstorms:'wi-thunderstorm','PM Thunderstorms':'wi-thunderstorm', Rain:'wi-rain','AM Rain':'wi-rain','Heavy Rain':'wi-rain',Showers:'wi-showers','Light Rain':'wi-rain-mix','Heavy Thunderstorms':'wi-thunderstorm'}[slide.text]"-->
+
+                            <div class="temperature royal">{{slide.high | number : 0 }}<sup>°</sup></div>
+
+                            <h1 class="assertive" ng-bind="slide.text"></h1>
+                        </div>
+                    </div>
+                </ion-slide>
+            </ion-slide-box>
+
+            <h4 class="royal">{{weatherReport.location.city}}, {{weatherReport.location.region}}</h4>
+               </div>   
+        </ion-content>
+        <div class="bar bar-footer weather-footer" ng-class="{loaded:'loaded'}">
+            <div class="button-bar">
+                <span class="button no-border no-radius button-royal no-border icon-top wi wi-sunrise">Sun Rise<em>{{weatherReport.astronomy.sunrise}}</em></span>
+                <span class="button no-border no-radius button-royal no-border icon-top wi wi-humidity">Humidity<em>{{weatherReport.atmosphere.humidity}}%</em></span>
+                <span class="button no-border no-radius button-royal no-border icon-top wi wi-sunset">Sun Set<em>{{weatherReport.astronomy.sunset}}</em></span>
+
+            </div>
+        </div>
+            
+    </ion-pane>
+</ion-view>
+
+<!--<span class="button  button-royal no-border no-radius icon-top wi wi-moon-waning-crescent-3">Night<em>15</em></span>-->
+<!-- <span class="button no-radius button-royal no-border icon-top wi wi-strong-wind">Wind<em>{{weatherReport.wind.speed}} mph</em></span>-->

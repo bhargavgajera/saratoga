@@ -1,0 +1,18 @@
+<ion-view title="Members" class="listing-page">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item item-avatar item-icon-right" ng-repeat="list in lists | filter: {favorite: favoriteList}" href="#/app/member/{{list.id}}">
+                <img ng-src="{{list.image || 'img/noimage.jpg'}}">
+                <h2 class="assertive">{{list.name}}</h2>
+                <p> <i class="ion-ios-location"></i> {{list.location}}</p>
+                <i class="icon ion-ios-arrow-forward circle royal"></i>
+                <ion-option-button class="button-royal" ng-click="checkfav(list)">
+                    <i class="icon" ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[list.favorite]"></i>
+                </ion-option-button>
+            </ion-item>
+            <ion-item ng-hide="lists.length">
+                No any Member
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,30 @@
+c<ion-view title="Search" class="listing-page">
+    <ion-header-bar class="bar bar-subheader search-box">
+        <form name="searchForm"  ng-submit="search(searchForm.$valid)" novalidate>
+        <label class="item item-input" >
+             
+            <input type="text" name="searchtext" class="royal" placeholder="Search" ng-model="searchData"  required>
+            <button class="button icon ion-search button-royal" type="submit"></button>
+        </label>
+            </form>
+    </ion-header-bar>
+
+
+    <ion-content>
+        
+        <ion-list>
+            <ion-item class="item  item-icon-right item-text-wrap"   ng-repeat="list in searchresult" ng-href="{{list.page || '#/app/notifications'}}">
+                    <!--<img ng-src="{{list.avtar || img/noimage.jpg}}" ng-class="{'has-image':list.event_thumb}">-->
+                   <h2 class="assertive" ng-bind="list.title"></h2>
+                    <p> {{list.details | limitTo : 100}}{{list.details.length > 80 ? " &hellip;": ""}}</p>
+                    <img class="box-img" width="60" ng-src="{{list.event_thumb}}" ng-if="list.event_thumb" alt="">
+                    <i class="icon ion-ios-arrow-forward  assertive"></i>
+                </ion-item>
+        </ion-list>
+        <ion-list ng-if="!searchresult && formsubmit">
+        <ion-item >
+                No any Items found
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

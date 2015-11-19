@@ -1,0 +1,82 @@
+<ion-view title="">
+    <ion-pane class="detail-page">
+        <ion-content class="has-header">
+            <div class="event-profile profile-detail" ng-class="{loaded:'loaded'}">
+            <div class="mamber-pic">
+                <div class="image-wrapper">
+                    <div class="image-block" style="background-image:url({{eventData.logo || 'img/noimage.jpg' }})">
+                        
+                    </div>
+                </div>
+                <h3 ng-bind-html="eventData.title"></h3>
+                <h5>{{eventData.catname}} <span ng-hide="!eventData.catname || !eventData.subcatname">></span> {{eventData.subcatname}}</h5>
+            </div>
+            <div class="button-bar padding-left-10 padding-right-10">
+                <a class="button icon-top ion-ios-people button-royal no-radius no-border">{{eventData.total_favorite}} Followers</a>
+                <a class="button icon-top button-calm no-border " ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[eventData.favorite]" ng-click="checkfav()">Favorite</a>
+                <a class="button icon-top ion-ios-location button-royal no-radius no-border" ng-click="gotoMap(eventData.lat,eventData.lng,eventData.title,eventData.address)">Map</a>
+            </div>
+            <div class="button-bar padding-left-10 padding-right-10">
+                <a class="button icon-top ion-compose button-calm no-radius no-border" ng-click="showcomment = true">{{eventData.total_comment}} Comments</a>
+                <a class="button icon-top ion-android-share button-royal no-border" ng-click="shareLink(eventData.title,eventData.share_url)">Share</a>
+                <a class="button icon-top ion-ios-albums-outline button-calm no-radius no-border" ng-click="showcomment = false">More</a>
+            </div>
+            <div class="content padding-10" ng-hide="showcomment">
+                
+                <div class="box-image" ng-show="eventData.featured_image"><img src="{{eventData.featured_image}}" alt=""></div>
+                
+                
+                <div class="contact-detail">
+                    <div class="row">
+                        <div class="col col-50">Contact :</div>
+                        <div class="col col-50">{{eventData.organizer_name}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">Address :</div>
+                        <div class="col col-50">{{eventData.address}}</div>
+                    </div>
+                    <div class="row" ng-if="eventData.organizer_phone">
+                        <div class="col col-50">Phone :</div>
+                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('tel:{{eventData.organizer_phone}}')">{{eventData.organizer_phone}}</a></div>
+                    </div>
+                    <div class="row" ng-if="eventData.organizer_email">
+                        <div class="col col-50">Email :</div>
+                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('mailto:{{eventData.organizer_email}}')">{{eventData.organizer_email}}</a></div>
+                    </div>
+                    <div class="row" ng-if="eventData.eventURL">
+                        <div class="col col-50">Event Website:</div>
+                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('{{eventData.eventURL}}')" target="_blank">Click Here</a></div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">Event Start Date :</div>
+                        <div class="col col-50">{{eventData.event_startdate}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-50">Event End Date :</div>
+                        <div class="col col-50">{{eventData.event_enddate}}</div>
+                    </div>
+                    
+                    </div>
+                    <div class="member_detail" ng-bind-html="eventData.content">
+                    </div>
+            </div>
+            <div class="comments" ng-show="showcomment">
+            <ion-list >
+                <div class="list-wrapper" ng-repeat="comment in eventData.comments track by $index" >
+                    <ion-item class="item item-divider uppercase" ng-bind="comment.date" ng-if="checkDate(comment.date,$index)"></ion-item>
+                    <ion-item class="item item-avatar item-text-wrap" >
+                    <img width="35" height="35" ng-src="{{comment.author_avtar || 'img/noimage.jpg' }}">
+                    <h2><strong>{{comment.author}}</strong> <span class="assertive">@{{comment.user_name}}</span> <time class="uppercase">{{comment.time}}</time></h2>
+                    {{comment.content}}
+                </ion-item>
+            </div>
+                 <ion-item ng-if="eventData.comments.length < 1">
+                    No any Comments<br> Be the first to comment.
+                </ion-item>
+            </ion-list>
+                <button class="button button-royal button-full no-margin no-radius" type="submit" ng-click="newComment()"><i class="icon ion-compose"></i></button>          
+            </div>
+                </div>
+        </ion-content>
+    </ion-pane>
+</ion-view>

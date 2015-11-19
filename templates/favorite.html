@@ -1,0 +1,37 @@
+<ion-view title="Favorites" class="listing-page">
+    <div class="tabs-striped tabs-top tabs-color-royal">
+        <div class="tabs">
+            <a class="tab-item" ng-class="{true:'active'}[favoriteList == 'member']" ng-click="favoriteList = 'member'" >
+                <i class="icon fa fa-building"></i>
+            </a>
+            <a class="tab-item" ng-class="{true:'active'}[favoriteList == 'event']" ng-click="favoriteList = 'event'" >
+                
+                 <i class="icon fa fa-calendar"></i>
+
+            </a>
+        </div>
+    </div>
+
+    <ion-content class="has-subheader">
+        <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+        <ion-list >
+            <ion-item class="item item-avatar item-icon-right" ng-repeat="list in lists | filter: {type : favoriteList, favorite:true}" href="#/app/{{url}}/{{list.id}}">
+                <img ng-src="{{list.image || 'img/noimage.jpg'}}">
+                <h2 class="assertive" ng-class="{'member':'assertive', 'event':'royal'}[favoriteList]">{{favoriteList}}{{list.name}} </h2>
+                <p ng-if="favoriteList == 'member'"> <i class="ion-ios-location"></i> {{list.location}}</p>
+                <p ng-if="favoriteList == 'event'"> <i class="ion-clock"></i> {{list.sartTime}} {{list.location}}</p>
+                <i class="icon ion-ios-arrow-forward circle royal"></i>
+                <ion-option-button class="button-royal" ng-click="checkfav(list)">
+                    <i class="icon" ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[list.favorite]"></i>
+                </ion-option-button>
+            </ion-item>
+
+            <ion-item ng-hide="(lists | filter: {type: favoriteList,favorite:true}).length">
+                No any Favorite {{favoriteList}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

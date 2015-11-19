@@ -1,0 +1,29 @@
+<div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+        <h1 class="title">Write Comment</h1>
+        <button class="button button-clear button-dark icon ion-ios-close-empty" ng-click="closeModel()"></button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content class="commentForm">
+
+        <form ng-submit="commentSubmit(commentForm.$valid,text)" name="commentForm" novalidate>
+            <div class="msg" ng-show="commentForm.$submitted || commentForm.comment.$touched">     
+              <div ng-show="commentForm.text.$error.required" class="assertive  padding">Please Write Comment</div>
+              <div ng-show="commentForm.text.$error.minlength" class="assertive  padding">Minimum 10 characters</div>
+            </div>
+            <div class="list">
+                <label class="item item-input">
+                    <textarea placeholder="Write your comment here" rows="5" name="text" ng-model="text" ng-minlength="10" required></textarea>
+                </label>
+            </div>
+            <div class="padding-left padding-right">
+                <button type="submit" class="button button-block button-royal button-full no-radius">Submit</button>
+            </div>
+        </form>
+
+    </ion-content>
+
+</div>

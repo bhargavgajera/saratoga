@@ -1,0 +1,52 @@
+<ion-view title="Events" class="listing-page">
+
+    <ion-pane>
+        <ion-content>
+            <ion-refresher
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+            <div class="calender-page" ng-class="{loaded:'loaded'}">
+                <div class="calendar">
+                    <div class="header">
+                        <i class="left icon ion-chevron-left" ng-click="previous()"></i>
+                        <span>{{month.format("MMMM, YYYY")}}</span>
+                        <i class="right icon ion-chevron-right" ng-click="next()"></i>
+                    </div>
+                    <div class="week names">
+                        <button class="day">Sun</button>
+                        <button class="day">Mon</button>
+                        <button class="day">Tue</button>
+                        <button class="day">Wed</button>
+                        <button class="day">Thu</button>
+                        <button class="day">Fri</button>
+                        <button class="day">Sat</button>
+                    </div>
+                    <div class ="week" ng-repeat="week in weeks">
+                        <button class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected), eventday : day.eventStatus.eventDay,subevent:day.eventStatus.subEvent,favevent:day.eventStatus.favEvent }" ng-click="select(day)" ng-repeat="day in week.days"><span>{{day.number}} </span></button>
+                    </div>
+                </div>
+                <ion-list class="event_lists">
+                     <div class="list-wrapper" ng-repeat="list in lists | filter:checkList" >
+                        <ion-item class="item item-divider "  ng-if="checkDate(list.star_date,$index,list.ismultiday)">
+                            <span ng-bind="list.star_date"></span> <span ng-bind="' - ' + list.end_date" ng-if="list.ismultiday"></span> 
+                         </ion-item>
+                    <ion-item class="item item-avatar item-icon-right" href="#/app/event/{{list.id}}">
+                        <img ng-src="{{list.image || 'img/noimage.jpg'}}">
+                        <h2 class="royal">{{favoriteList}}{{list.name}} </h2>
+                        <p> <i class="ion-clock"></i> {{list.sartTime}} {{list.location}}</p>
+                        <i class="icon ion-ios-arrow-forward circle royal"></i>
+                        <ion-option-button class="button-royal" ng-click="checkfav(list)">
+                            <i class="icon" ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[list.favorite]"></i>
+                        </ion-option-button>
+                    </ion-item>
+                    </div>     
+                </ion-list>
+
+
+
+            </div>
+        </ion-content>
+
+    </ion-pane>
+</ion-view>

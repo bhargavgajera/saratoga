@@ -1,0 +1,30 @@
+<ion-view title="Log In">
+    <ion-pane class="login-page">
+        <div class="bar bar-header bar-light">
+            <a class="button button-icon icon ion-ios-arrow-thin-left" href="#/home"></a>
+            <h1 class="title">Get new Password</h1>
+        </div>
+        <ion-content class="has-header padding">
+            <div class="list">
+                
+                <div class="form-login">
+                     <form name="forgotForm"  ng-submit="forgot(forgotForm.$valid,forgotForm.email.$modelValue)" novalidate>
+                    <label class="item item-input icon-user" ng-class="{error:(forgotForm.email.$error.email || forgotForm.email.$error.required),errorview :(forgotForm.$submitted || forgotForm.email.$touched)}">
+                        <input type="email" placeholder="Email" name="email" ng-model="email" required>
+                        <i class="icon ion-email royal"></i>
+                    </label>
+                   
+                      
+                         
+                         <button type="submit" class="button button-full button-royal no-border bold-text uppercase login-btn">
+                        Get new password  
+                    </button>
+                    </form>
+                    
+                    <a class="button button-clear button-dark underline " href="#/login"  >Login </a>
+                    <a class="button button-clear button-dark underline" href="#/register" >Create My Account</a>
+                </div>
+            </div>
+        </ion-content>
+    </ion-pane>
+</ion-view>

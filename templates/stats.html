@@ -1,0 +1,134 @@
+<ion-view title="My Stats" class="stats-page">
+
+    <ion-pane>
+        <ion-content>
+
+            <div class="list card chart-card">
+                <div class="item item-divider">
+                    <h2>Profile Views</h2>
+                </div>
+
+
+                <div class="item item-body">
+                    <canvas id="bar" class="chart chart-bar" chart-data="barchart.data" chart-labels="barchart.label" >
+                    </canvas>
+                </div>
+
+                <div class="row">
+                    <div class="col col-33 align-center">
+                        <h3>{{click_through.data[0]+click_through.data[1]}}</h3>
+                        <h6 class="uppercase">Listing Views</h6></div>
+                    <div class="col col-33 align-center">
+                        <h3>{{follower}}</h3>
+                        <h6 class="uppercase">Followers</h6></div>
+                    <div class="col col-33 align-center">
+                        <h3>{{click_through.data[0]}}</h3>
+                        <h6 class="uppercase">Click Throughs</h6></div>
+                     
+
+
+                </div>
+
+            </div>
+
+
+
+            <div class="list card chart-card">
+                <div class="item item-divider">
+                    <h2>Clickthrough Rate</h2>
+                </div>
+
+
+                <div class="item item-body">
+                    
+                    <canvas id="pie" class="chart chart-pie" chart-data="click_through.data" chart-labels="click_through.label" chart-legend="true">
+                    </canvas>
+                </div>
+
+                <div class="row">
+                    <div class="col col-100 align-center">
+                        <h3 class="assertive" ng-bind="getPer(click_through.data[0],click_through.data[1])"></h3>
+                        <h5>Clickthrough Rate</h5>
+                    </div>
+
+
+                </div>
+
+            </div>
+           <div class="list card chart-card">
+                <div class="item item-divider">
+                    <h2>bounce Rate</h2>
+                </div>
+
+
+                <div class="item item-body">
+                   
+                    <canvas id="pie2" class="chart chart-pie" chart-data="bounce.data" chart-labels="bounce.label" chart-legend="true">
+                    </canvas>
+                </div>
+
+                <div class="row">
+                    <div class="col col-100 align-center">
+                        <h3 class="assertive" ng-bind="getPer(bounce.data[0],bounce.data[1])"></h3>
+                        <h5>bounce Rate</h5>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="list card chart-card">
+                <div class="item item-divider">
+                    <h2>Remaining Pushes</h2>
+                </div>
+
+
+                <div class="item item-body">
+                    <canvas id="pie3" class="chart chart-pie" chart-data="pushnotification.data" chart-labels="pushnotification.label" chart-legend="true">
+                    </canvas>
+                </div>
+
+                <div class="row">
+                    <div class="col col-100 align-center">
+                        <h3 class="assertive" ng-bind="pushnotification.data[0]"></h3>
+                        <h5>Remaining Pushes</h5>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+
+
+
+            <!-- <div id='columnchart_values' style=''></div>
+
+            <div class="chart">
+                <div id="clickthroughpieChart"></div>
+                <div id="clickthroughpieChartTitle" class="chart_title"><span>4.83%</span>
+                    <br>ClickThrough Rate</div>
+            </div>
+
+            <div class="chart">
+                <div id="bouncepieChart"></div>
+                <div id="bouncepieTitle" class="chart_title"><span>66.49%</span>
+                    <br>Bounce Rate</div>
+            </div>
+
+            <div class="chart">
+
+                <div id="pushnotificationpieChart"></div>
+                <div class="chart_title"><span>23</span>
+                    <br>Remaining Pushes</div>
+            </div>
+            
+            <div id="regions_div"  style="width: 900px; height: 500px;"></div> -->
+        </ion-content>
+
+    </ion-pane>
+</ion-view>
+
+<!--<span class="button  button-royal no-border no-radius icon-top wi wi-moon-waning-crescent-3">Night<em>15</em></span>-->
+<!-- <span class="button no-radius button-royal no-border icon-top wi wi-strong-wind">Wind<em>{{weatherReport.wind.speed}} mph</em></span>-->

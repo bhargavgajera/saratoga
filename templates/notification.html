@@ -1,0 +1,39 @@
+<ion-view view-title='Notifications <span class="badge badge-royal">{{badge}}</span>' class="notification-page">
+    <ion-pane class="listing-page ">
+        <ion-content class="has-header ">
+            <ion-refresher pulling-text="Pull to refresh..." on-refresh="doRefresh()">
+            </ion-refresher>
+
+            <ion-list>
+                 <!--| orderBy:'is_read'-->
+                <ion-item class="item item-avatar item-icon-right item-text-wrap" ng-class="{'has-image':list.event_thumb}"  ng-repeat="list in notifications" ng-href="{{list.pageurl || '#/app/notifications'}}" ng-click="readNotes(list)" >
+                    <img ng-src="{{list.avtar || img/noimage.jpg}}" ng-class="{'read':list.	
+is_read}">
+                    <h3 ng-bind-html="list.title"></h3>
+                    <p ng-bind="list.message" ng-if="list.message"></p>
+                    <p class="time"> <i class="ion-android-time"></i> <span ng-bind="timestamp(list.notification_date)"></span></p>
+                    <img class="box-img" width="60" ng-class="{'read':list.	
+is_read}" ng-src="{{list.event_thumb}}" ng-if="list.event_thumb" alt="">
+                    <i ng-if="list.pageurl" class="icon ion-ios-arrow-forward  assertive"></i>
+                </ion-item>
+            </ion-list>
+
+            <!--<ion-list>
+                    <ion-item class="item item-avatar item-icon-right item-text-wrap" href="#/app/event/1">
+                        <img src="img/photos/list-image-1.jpg">
+                        <h3><mark>Martin</mark> and <mark>2 other Friends</mark> have  added you  to the their circle! you have ..</h3>
+                        <p> <i class="ion-android-time"></i> A Few Seconds ago</p>
+                        <i class="icon ion-ios-arrow-forward  assertive"></i>
+
+                    </ion-item>
+                    <ion-item class="item item-avatar item-icon-right item-text-wrap has-image" href="#/app/event/2">
+                        <img src="img/photos/list-image-2.jpg">
+                        <h3><mark>Jade Jordan</mark> posted a picture on your timeline.</h3>
+                        <p> <i class="ion-android-time"></i> 2 Hours ago</p>
+                        <img class="box-img" width="60" src="img/photos/list-image-9.jpg" alt="">
+                        <i class="icon ion-ios-arrow-forward  assertive"></i>
+                    </ion-item>
+                </ion-list>-->
+        </ion-content>
+    </ion-pane>
+</ion-view>

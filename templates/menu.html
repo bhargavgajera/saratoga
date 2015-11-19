@@ -1,0 +1,105 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-light">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+        
+        <ion-nav-buttons side="right" >
+        <a class="button button-icon button-clear ion-ios-gear-outline"  href="#/app/settings"  >
+        </a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="sidebar-page">
+    <ion-header-bar class="bar-light">
+     <a menu-close class="button button-icon icon ion-ios-close-empty"></a>
+            <h1 class="title">Menu</h1>
+    </ion-header-bar>
+            <ion-content >
+            <ion-list>
+                <a menu-close class="item item-avatar" href="#/app/profile">
+                    <img width="35" height="35" ng-src="{{Avatar || img/noimage.jpg}}">
+                    {{displayName}}
+                </a>
+                
+<!--
+                <ion-item menu-close  class="item item-icon-left" >
+                    <i class="icon ion-ios-search"></i> 
+                    Search
+                </ion-item>
+-->
+                 <ion-item menu-close class="item item-icon-left" href="#/app/search">
+                    <i class="icon ion-ios-search"></i> 
+                    Search
+                </ion-item>
+                <ion-item menu-close class="item item-icon-left" href="#/app/notifications">
+                    <i class="icon ion-ios-chatbubble-outline"></i> 
+                    Messages  <span class="badge badge-royal" ng-bind="badge" ng-if="badge"></span>
+                </ion-item>
+                
+              <ion-item menu-close class="item item-icon-left"   href="#/app/favorite">
+                    <i class="icon ion-ios-star-outline"></i> 
+                    Favorites
+                </ion-item>
+                <ion-item menu-close class="item item-icon-left"   href="#/app/calendar">
+                    <i class="icon ion-ios-calendar-outline"></i> 
+                    Events
+                </ion-item>
+                
+                <ion-item menu-close class="item item-icon-left"   href="#/app/categories">
+                    <i class="icon fa fa-building-o"></i>
+                    Saratoga Businesses
+                </ion-item>
+                
+                <ion-item menu-close class="item item-icon-left"   href="#/app/connections">
+                    <i class="icon ion-ios-people-outline"></i> 
+                    Connections
+                </ion-item>
+                
+                <ion-item menu-close class="item item-icon-left"   href="#/app/mapiframe">
+                    <i class="icon ion-ios-world-outline"></i> 
+                    Map
+                </ion-item>
+                
+                <ion-item menu-close class="item item-icon-left"   href="#/app/weather">
+                    <i class="icon ion-ios-partlysunny-outline"></i> 
+                    Weather
+                </ion-item>
+                
+<!--
+                <ion-item menu-close class="item item-icon-left" href="#/app/notifications" >
+                    <i class="icon ion-ios-people-outline"></i> 
+                    Following
+                </ion-item>
+
+                
+                <ion-item menu-close class="item item-icon-left" href="#/app/notifications">
+                    <i class="icon ion-ios-star-outline"></i> 
+                    My Favorites
+                </ion-item>
+                 -->  
+                <ion-item menu-close class="item item-icon-left"  href="#/app/stats" ng-if="role">
+                    <i class="icon ion-ios-pie-outline"></i> 
+                    Reports
+                </ion-item>
+             
+                 <ion-item menu-close class="item item-icon-left" href="#/app/settings">
+                    <i class="icon ion-ios-settings"></i> 
+                    Settings
+                </ion-item>
+                
+                 <ion-item menu-close class="item item-icon-left" ng-click="logout()">
+                    <i class="icon ion-log-out"></i> 
+                    <strong>Logout</strong>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
