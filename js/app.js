@@ -243,11 +243,6 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         console.log("click on push notification in ios : "+ notification.externallink)
                         window.open(notification.externallink, '_system');
                     }
-                
-                
-                
-                
-                
             });
     }
 })

@@ -705,7 +705,7 @@ angular.module('saratoga.controllers', [])
         if (typeof $rootScope.notifications == "undefined") {
             return false;
         }
-
+        
         angular.forEach($rootScope.notifications, function (value, key) {
             if (value.eventid == eventId) {
                 value.is_read = true;
@@ -783,11 +783,26 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             $scope.eventData.favorite = result.favorite
             $scope.eventData.total_favorite = result.followers;
-            $rootScope.events.filter(function (el) {
+            
+            
+            if (typeof $rootScope.events != "undefined")
+            {
+               $rootScope.events.filter(function (el) {
                 if (el.id == $state.params.Id) {
                     el.favorite = result.favorite;
                 }
-            });
+                });
+            }
+            
+            if (typeof $rootScope.favourites != "undefined")
+            {
+                $rootScope.favourites.filter(function (el) {
+                    if (el.id == $state.params.Id) {
+                        el.favorite = result.favorite;
+                    }
+                });
+            }
+            
 
             $rootScope.setCalendar()
 
@@ -1087,12 +1102,28 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             $scope.memberData.favorite = result.favorite
             $scope.memberData.total_favorite = result.followers;
-            $rootScope.members.filter(function (el) {
+            
+            if (typeof $rootScope.members != "undefined")
+            {
+                $rootScope.members.filter(function (el) {
                 if (el.id == $state.params.Id) {
                     console.log(el);
                     el.favorite = result.favorite;
-                }
-            });
+                    }
+                });
+            }
+            
+            if (typeof $rootScope.favourites != "undefined")
+            {
+                $rootScope.favourites.filter(function (el) {
+                    if (el.id == $state.params.Id) {
+                        console.log(el);
+                        el.favorite = result.favorite;
+                    }
+                });
+            }
+            
+            
 
         }, function (error) {
             $ionicLoading.hide();
@@ -1140,7 +1171,7 @@ angular.module('saratoga.controllers', [])
             user: $rootScope.userData.id
         }).then(function (result) {
             $ionicLoading.hide();
-            $scope.lists = result.favourites;
+            $scope.favourites = result.favourites;
             $rootScope.favourites = result.favourites;
         }, function (error) {
             $ionicLoading.hide();
