@@ -225,7 +225,8 @@ input {font-family: "HelveticaNeue"; }
 
 .contact-detail { border:solid 1px #ccc; margin: 20px 0 20px;font-family: "HelveticaLTStd-Roman";}
 .contact-detail a { text-decoration:none;}
-.contact-detail .social a.icon { font-size: 17px; margin:0; background:#7272B8; color: #fff; margin-bottom: 5px; display: inline-block; width: 23px; text-align: center;}
+.contact-detail .social a.icon { font-size: 14px; margin:0; background:#7272B8; color: #fff; margin-bottom: 5px; display: inline-block; min-width: 23px; text-align: center; padding: 0 2px; float: left; margin:1px !important;}
+.contact-detail .social a.icon img { width: 100%; max-width: 18px; height: auto; position: relative; top:1px;}
 .contact-detail .social a.text { font-size: 11px; background:#4E385E; color: #fff; width: auto; display: inline-block; margin-bottom: 5px; text-align: center; line-height: 15px; padding: 3px;}
 
 .box-image img{ width: 100%; height: auto; padding: 5px;border:solid 1px #ccc;}
