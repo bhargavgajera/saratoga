@@ -1240,7 +1240,8 @@ angular.module('saratoga.controllers', [])
     $scope.searchData;
     $scope.ConnectedList = true;
     $ionicListDelegate.closeOptionButtons();
-
+    $scope.connections;
+    $rootScope.connections;
 
     $scope.doRefresh = function (startFrom) {
         console.log("start : " + startFrom);
