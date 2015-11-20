@@ -297,6 +297,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 .internetError .popup-head{ border-color:#387EF5;}
 .internetError .popup-body { font-size: 16px;}
 
+.popup-buttons .button.button-positive{background-color: #7272b8;border-color: #5757aa;color: #fff;} 
+
 
  .item-body.item-accordion {
     line-height: 38px;
@@ -514,4 +516,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 
 
 
+
+/*
+add update photo for fisrt time
+green arrow not align beside the country
+event website link
+
+
+change spelling on the log in screen - done
+button ok color need to change as per theme - done
+connection favorit in search - done
+connection user location not comign on search listing - done
+
+*/
 

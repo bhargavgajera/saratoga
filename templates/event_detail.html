@@ -45,7 +45,7 @@
                     </div>
                     <div class="row" ng-if="eventData.eventURL">
                         <div class="col col-50">Event Website:</div>
-                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('{{eventData.eventURL}}')" target="_blank">Click Here</a></div>
+                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('{{eventData.eventURL}}')" >Click Here</a></div>
                     </div>
                     <div class="row">
                         <div class="col col-50">Event Start Date :</div>
@@ -71,7 +71,7 @@
                 </ion-item>
             </div>
                  <ion-item ng-if="eventData.comments.length < 1">
-                    No any Comments<br> Be the first to comment.
+                    No any comments<br> be the first to comment.
                 </ion-item>
             </ion-list>
                 <button class="button button-royal button-full no-margin no-radius" type="submit" ng-click="newComment()"><i class="icon ion-compose"></i></button>          

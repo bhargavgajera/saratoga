@@ -19,7 +19,7 @@
             <ion-item class="item item-avatar item-icon-right" ng-repeat="connection in connections | filter: {connected: true} | orderBy: 'display_name'" >
                 <img ng-src="{{connection.avatar || 'img/noimage.jpg'}}">
                 <h2 class="assertive">{{connection.display_name}}</h2>
-                <p ng-if="country"> <i class="ion-ios-location"></i> {{connection.country}}</p>
+                <p ng-if="connection.country"> <i class="ion-ios-location"></i> {{connection.country}}</p>
                 <i class="icon ion-ios-arrow-forward circle royal"></i>
                 <ion-option-button class="button-royal" ng-click="checkConnect(connection,'list')">
                     <i class="icon" ng-class="{true:'ion-ios-heart', false:'ion-ios-heart-outline'}[connection.connected]"></i>
@@ -27,7 +27,7 @@
             </ion-item>
 
             <ion-item ng-hide="(connections | filter: {connected: true}).length">
-                No any People
+                No any connection
             </ion-item>
         </ion-list> 
     </ion-content>
@@ -35,18 +35,18 @@
      <ion-content class="has-subheader" ng-show="!ConnectedList">
     
      <ion-list ng-init="favItem = false" >
-            <ion-item class="item item-avatar item-icon-right" ng-repeat="connection in searchConnect | filter: {connected: false}" >
+            <ion-item class="item item-avatar item-icon-right" ng-repeat="connection in searchConnect" >
                 <img ng-src="{{connection.avatar || 'img/noimage.jpg'}}">
                 <h2 class="assertive">{{connection.display_name}}</h2>
-                <p ng-if="country"> <i class="ion-ios-location"></i> {{connection.country}}</p>
+                <p ng-if="connection.country"> <i class="ion-ios-location"></i> {{connection.country}}</p>
                 <i class="icon ion-ios-arrow-forward circle royal"></i>
                 <ion-option-button class="button-royal" ng-click="checkConnect(connection,'search')">
                     <i class="icon" ng-class="{true:'ion-ios-heart', false:'ion-ios-heart-outline'}[connection.connected]"></i>
                 </ion-option-button>
             </ion-item>
 
-            <ion-item ng-hide="(searchConnect | filter: {connected: false}).length">
-                No Search Result
+            <ion-item ng-hide="(searchConnect).length">
+                No search result
             </ion-item>
         </ion-list>
     </ion-content>
