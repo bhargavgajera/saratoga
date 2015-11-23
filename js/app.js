@@ -3,13 +3,61 @@ var root = null;
 
 
 
+ /*==================  angular-ios9-uiwebview.patch.js v1.1.1 ==================*/
+
+
+angular.module('ngIOS9UIWebViewPatch', ['ng']).config(['$provide', function($provide) {
+  'use strict';
+
+  $provide.decorator('$browser', ['$delegate', '$window', function($delegate, $window) {
+
+    if (isIOS9UIWebView($window.navigator.userAgent)) {
+      return applyIOS9Shim($delegate);
+    }
+
+    return $delegate;
+
+    function isIOS9UIWebView(userAgent) {
+      return /(iPhone|iPad|iPod).* OS 9_\d/.test(userAgent) && !/Version\/9\./.test(userAgent);
+    }
+
+    function applyIOS9Shim(browser) {
+      var pendingLocationUrl = null;
+      var originalUrlFn= browser.url;
+
+      browser.url = function() {
+        if (arguments.length) {
+          pendingLocationUrl = arguments[0];
+          return originalUrlFn.apply(browser, arguments);
+        }
+
+        return pendingLocationUrl || originalUrlFn.apply(browser, arguments);
+      };
+
+      window.addEventListener('popstate', clearPendingLocationUrl, false);
+      window.addEventListener('hashchange', clearPendingLocationUrl, false);
+
+      function clearPendingLocationUrl() {
+        pendingLocationUrl = null;
+      }
+
+      return browser;
+    }
+  }]);
+}]);
+
+
+
+
 
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart.js'])
+
+
+angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart.js','ngIOS9UIWebViewPatch'])
 
 .run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
     $ionicPlatform.ready(function () {
@@ -511,3 +559,8 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
     };
     return obj;
 }])
+
+
+
+
+
