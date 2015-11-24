@@ -29,12 +29,7 @@
                     {{displayName}}
                 </a>
                 
-<!--
-                <ion-item menu-close  class="item item-icon-left" >
-                    <i class="icon ion-ios-search"></i> 
-                    Search
-                </ion-item>
--->
+
                  <ion-item menu-close class="item item-icon-left" href="#/app/search">
                     <i class="icon ion-ios-search"></i> 
                     Search
@@ -44,18 +39,21 @@
                     Messages  <span class="badge badge-royal" ng-bind="badge" ng-if="badge"></span>
                 </ion-item>
                 
-              <ion-item menu-close class="item item-icon-left"   href="#/app/favorite">
-                    <i class="icon ion-ios-star-outline"></i> 
-                    Favorites
-                </ion-item>
-                <ion-item menu-close class="item item-icon-left"   href="#/app/calendar">
+                 <ion-item menu-close class="item item-icon-left"   href="#/app/calendar">
                     <i class="icon ion-ios-calendar-outline"></i> 
                     Events
                 </ion-item>
+              
+               
                 
                 <ion-item menu-close class="item item-icon-left"   href="#/app/categories">
                     <i class="icon fa fa-building-o"></i>
-                    Saratoga Businesses
+                    Businesses
+                </ion-item>
+                
+                <ion-item menu-close class="item item-icon-left"   href="#/app/favorite">
+                    <i class="icon ion-ios-star-outline"></i> 
+                    Favorites
                 </ion-item>
                 
                 <ion-item menu-close class="item item-icon-left"   href="#/app/connections">
@@ -73,18 +71,6 @@
                     Weather
                 </ion-item>
                 
-<!--
-                <ion-item menu-close class="item item-icon-left" href="#/app/notifications" >
-                    <i class="icon ion-ios-people-outline"></i> 
-                    Following
-                </ion-item>
-
-                
-                <ion-item menu-close class="item item-icon-left" href="#/app/notifications">
-                    <i class="icon ion-ios-star-outline"></i> 
-                    My Favorites
-                </ion-item>
-                 -->  
                 <ion-item menu-close class="item item-icon-left"  href="#/app/stats" ng-if="role">
                     <i class="icon ion-ios-pie-outline"></i> 
                     Reports

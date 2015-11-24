@@ -39,7 +39,7 @@ angular.module('saratoga.controllers', [])
 
     $rootScope.displayName = $rootScope.userData.displayname;
     $rootScope.Avatar = $rootScope.userData.avatar;
-    $scope.role = $rootScope.userData.role == "saratoga_member";
+    $scope.role = $rootScope.userData.role != "subscriber";
     $scope.logout = function () {
         console.log("test");
 
@@ -303,7 +303,7 @@ angular.module('saratoga.controllers', [])
                     username: $scope.data.uname,
                     user_pass: $scope.data.password,
                     display_name: $scope.data.fname + " " + $scope.data.lname || "",
-                    country: $scope.data.contry,
+                    country: $scope.data.country,
                     nonce: result.nonce,
                     deviceid: window.localStorage.getItem("regId"),
                     devicetype: $rootScope.platform
@@ -432,7 +432,7 @@ angular.module('saratoga.controllers', [])
         uname: userData.username,
         password: "",
         cpassword: "",
-        contry: userData.country
+        country: userData.country
     };
 
 
@@ -506,7 +506,7 @@ angular.module('saratoga.controllers', [])
             email: $scope.data.email,
             pasword: $scope.data.password,
             display_name: $scope.data.fname + " " + $scope.data.lname || "",
-            country: $scope.data.contry,
+            country: $scope.data.country,
         }).then(function (result) {
                 console.log(result);
                 var UserId = result.user_id;
@@ -739,7 +739,7 @@ angular.module('saratoga.controllers', [])
         if (!lat || !lng) {
             $ionicPopup.alert({
                 title: 'Error',
-                template: 'location not available'
+                template: 'Event location not available'
             });
             return false;
         }
@@ -930,7 +930,7 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('memberdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing) {
+.controller('memberdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing, $ionicSlideBoxDelegate) {
 
     root = $rootScope;
     scope = $scope;
@@ -941,6 +941,8 @@ angular.module('saratoga.controllers', [])
     $scope.commentMsg = "";
     $scope.loaded = false;
 
+    
+     
 
     $ionicModal.fromTemplateUrl('templates/writecomment.html', function (modal) {
         $scope.taskModal = modal;
@@ -1028,7 +1030,7 @@ angular.module('saratoga.controllers', [])
         $scope.loaded = true;
         console.log(result.member);
         $scope.timeout = setTimeout($scope.callNobounce, 30000)
-
+        $ionicSlideBoxDelegate.update();
 
     }, function (error) {
         $ionicLoading.hide();
@@ -1073,7 +1075,7 @@ angular.module('saratoga.controllers', [])
         if (!lat || !lng) {
             $ionicPopup.alert({
                 title: 'Error',
-                template: 'location not available'
+                template: 'Member location not available'
             });
             return false;
         }
