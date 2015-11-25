@@ -73,7 +73,7 @@
                           
                         <span class="input-label"><strong>Country<em class="assertive">*</em></strong></span>
                         <div class="select-wrapper">
-                            <select class="icon" name="contry" ng-model="data.country">
+                            <select class="icon" name="country" ng-model="data.country">
                                 <option value="">Select your Country</option>
                                 <option value="Afganistan">Afghanistan</option>
                                 <option value="Albania">Albania</option>
@@ -325,9 +325,9 @@
 
                             </select><i class="icon ion-arrow-down-b"></i> </div>
 
-                        <div class="msg" ng-show="userForm.$submitted || userForm.contry.$touched">
-                            <i ng-hide="!data.contry" class="icon ion-checkmark-round  balanced"></i>
-                            <i ng-show="!data.contry" class="icon ion-close-round assertive"></i>
+                        <div class="msg" ng-show="userForm.$submitted || userForm.country.$touched">
+                            <i ng-hide="!data.country" class="icon ion-checkmark-round  balanced"></i>
+                            <i ng-show="!data.country" class="icon ion-close-round assertive"></i>
                         </div>
                     </label>
 

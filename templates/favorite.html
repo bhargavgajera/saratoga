@@ -20,7 +20,7 @@
         <ion-list >
             <ion-item class="item item-avatar item-icon-right" ng-repeat="list in favourites | filter: {type : favoriteList, favorite:true}" href="#/app/{{favoriteList}}/{{list.id}}">
                 <img ng-src="{{list.image || 'img/noimage.jpg'}}">
-                <h2 class="assertive" ng-class="{'member':'assertive', 'event':'royal'}[favoriteList]">{{favoriteList}}{{list.name}} </h2>
+                <h2 class="assertive" ng-class="{'member':'assertive', 'event':'royal'}[favoriteList]">{{list.name}} </h2>
                 <p ng-if="favoriteList == 'member'"> <i class="ion-ios-location"></i> {{list.location}}</p>
                 <p ng-if="favoriteList == 'event'"> <i class="ion-clock"></i> {{list.sartTime}} {{list.location}}</p>
                 <i class="icon ion-ios-arrow-forward circle royal"></i>

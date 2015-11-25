@@ -99,6 +99,7 @@ input {font-family: "HelveticaNeue"; }
 .bold-text { font-weight: bold}
 .uppercase { text-transform: uppercase;}
 .list mark{ background: none;}
+.badge { min-width: 23px; text-align: center;}
 .title .badge  { position: relative; top: -6px;}
 .slider { height: 100%; text-align: center}
 .align-right { text-align: right;}
@@ -241,7 +242,7 @@ input {font-family: "HelveticaNeue"; }
 .box-image img{ width: 100%; height: auto; padding: 5px;border:solid 1px #ccc;}
 
 
-.categories-page .itme{ background-repeat: no-repeat; background-size: cover;}
+.categories-page .item{ background-repeat: no-repeat; background-size: cover;}
 .categories-page .dark-shade { position: relative;} 
 .categories-page .dark-shade h2 { z-index: 555; position: relative; font-weight: bold;}
 .categories-page .dark-shade:after{
