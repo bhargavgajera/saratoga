@@ -221,10 +221,8 @@ angular.module('saratoga.controllers', [])
     $scope.uploaded = false;
     $scope.data = {};
     $scope.data.lname = "";
+    $scope.data.country = "United States of America";
     $scope.imagePath = null;
-
-
-
 
     $scope.showDetails = function () {
         var hideSheet = $ionicActionSheet.show({

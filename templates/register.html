@@ -73,7 +73,7 @@
                           
                         <span class="input-label"><strong>Country<em class="assertive">*</em></strong></span>
                         <div class="select-wrapper">
-                            <select class="icon" name="country" ng-model="data.country">
+                            <select class="icon" name="country" ng-model="data.country" >
                                 <option value="">Select your Country</option>
                                 <option value="Afganistan">Afghanistan</option>
                                 <option value="Albania">Albania</option>
@@ -336,7 +336,7 @@
 
             </ion-content>
             <div class="bar bar-footer register-footer">
-                <button class="button button-royal button-full no-margin no-radius" ng-disabled="!userForm.$valid || (data.password != data.cpassword) || !data.contry " type="submit"><i class="icon ion-checkmark-round"></i></button>
+                <button class="button button-royal button-full no-margin no-radius" ng-disabled="!userForm.$valid || (data.password != data.cpassword) || !data.country" type="submit"><i class="icon ion-checkmark-round"></i></button>
             </div>
         </form>
     </ion-pane>
