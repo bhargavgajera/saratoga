@@ -1,12 +1,17 @@
 <ion-view title="map" class="map-page">
     
     <ion-content>
-        <div class="button-bar map-button ">
+       <!-- <div class="button-bar map-button ">
           <a class="button icon ion-android-sync no-border dark"></a>
           <a class="button icon ion-android-search no-border dark"></a>
             <a class="button icon ion-map no-border dark"></a>
           <a class="button icon ion-pricetag no-border dark"></a>
+        </div>-->
+         <div class="button-bar map-button ">
+          <a class="button icon ion-navigate no-border dark"></a>
         </div>
+        <div class="map-text" ng-bind="cpos">lat:55 , long : 555</div>
+        <a ng-click="openLink()" class="map-navicon ion-navigate"></a>
         <div id="map" data-tap-disabled="true"></div>
     </ion-content>
 </ion-view>

@@ -25,10 +25,10 @@
                 </div>
                 <div class="content padding-10" ng-hide="showcomment">
 
-                    <div class="box-image" ng-show="memberData.featured_image"><img src="{{memberData.featured_image}}" alt=""></div>
+                    <div class="box-image" ng-if="memberData.featured_image"><img src="{{memberData.featured_image}}" alt=""></div>
 
                     <div class="gallery">
-                        <ion-slide-box >
+                        <ion-slide-box  ng-if="memberData.image_gallery">
                             <ion-slide ng-repeat="slide in memberData.image_gallery">
                                 <div class="image-box">
                                     <img ng-src="{{slide.image}}" alt="{{slide.caption}}">
@@ -40,12 +40,12 @@
                     </div>
                    
                     
-                    <!--<div class="video-block">
-                          {{memberData.video}}
-                    <iframe  src=" " frameborder="0" allowfullscreen></iframe>
+                    <div class="video-block" ng-if="memberData.video" >
+                    <iframe  ng-src="{{videoUrl(memberData.video)}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    
                    
-                    </div>-->
-
+                    
                     <div class="contact-detail">
                         <div class="row" ng-if="memberData.contact_fullname">
                             <div class="col col-50">Contact :</div>

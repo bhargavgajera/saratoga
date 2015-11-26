@@ -333,6 +333,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 
 .map-button { position: absolute; left: 50%; bottom: 20px; z-index: 555; width: calc(100% - 30px); -webkit-transform: translateX(-50%); -ms-transform: translateX(-50%); transform: translateX(-50%); display: none;}
 .map-button .icon { background: rgba(255,255,255,0.9);}
+.map-text { position: absolute; width: 100%; z-index: 444; background: rgba(255,255,255,.8); padding: 10px; font-weight: bold;}
+.map-navicon {position: absolute; z-index: 444; background: rgb(114, 114, 184); padding: 10px; font-weight: bold; left: 10px; top: 80%; border-radius: 50%; width: 45px; height: 45px;color:#fff;box-shadow: 0px 0px 5px rgba(0,0,0,0.2); text-align: center; display: inline-block;}
+.map-navicon:before { font-size: 24px;margin-top:2px;}
 
 .bubble { color: #fff; padding: 0 20px;}
 .bubble-text h2{color: #fff; font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0px 0 8px;}

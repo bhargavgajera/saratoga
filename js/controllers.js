@@ -703,7 +703,7 @@ angular.module('saratoga.controllers', [])
         if (typeof $rootScope.notifications == "undefined") {
             return false;
         }
-        
+
         angular.forEach($rootScope.notifications, function (value, key) {
             if (value.eventid == eventId) {
                 value.is_read = true;
@@ -781,26 +781,24 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             $scope.eventData.favorite = result.favorite
             $scope.eventData.total_favorite = result.followers;
-            
-            
-            if (typeof $rootScope.events != "undefined")
-            {
-               $rootScope.events.filter(function (el) {
-                if (el.id == $state.params.Id) {
-                    el.favorite = result.favorite;
-                }
+
+
+            if (typeof $rootScope.events != "undefined") {
+                $rootScope.events.filter(function (el) {
+                    if (el.id == $state.params.Id) {
+                        el.favorite = result.favorite;
+                    }
                 });
             }
-            
-            if (typeof $rootScope.favourites != "undefined")
-            {
+
+            if (typeof $rootScope.favourites != "undefined") {
                 $rootScope.favourites.filter(function (el) {
                     if (el.id == $state.params.Id) {
                         el.favorite = result.favorite;
                     }
                 });
             }
-            
+
 
             $rootScope.setCalendar()
 
@@ -928,19 +926,17 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('memberdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing, $ionicSlideBoxDelegate) {
+.controller('memberdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing, $ionicSlideBoxDelegate, $sce) {
 
     root = $rootScope;
     scope = $scope;
-
+    console.log('sce');
+    console.log($sce);
     $scope.memberId = $state.params.Id;
     $scope.oldDate = "";
     $scope.showcomment = false;
     $scope.commentMsg = "";
     $scope.loaded = false;
-
-    
-     
 
     $ionicModal.fromTemplateUrl('templates/writecomment.html', function (modal) {
         $scope.taskModal = modal;
@@ -955,6 +951,11 @@ angular.module('saratoga.controllers', [])
         console.log(weblink);
         window.open(weblink, '_system');
         return false;
+    }
+
+
+    $scope.videoUrl = function (link) {
+        return $sce.trustAsResourceUrl(link);
     }
 
 
@@ -1102,19 +1103,17 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             $scope.memberData.favorite = result.favorite
             $scope.memberData.total_favorite = result.followers;
-            
-            if (typeof $rootScope.members != "undefined")
-            {
+
+            if (typeof $rootScope.members != "undefined") {
                 $rootScope.members.filter(function (el) {
-                if (el.id == $state.params.Id) {
-                    console.log(el);
-                    el.favorite = result.favorite;
+                    if (el.id == $state.params.Id) {
+                        console.log(el);
+                        el.favorite = result.favorite;
                     }
                 });
             }
-            
-            if (typeof $rootScope.favourites != "undefined")
-            {
+
+            if (typeof $rootScope.favourites != "undefined") {
                 $rootScope.favourites.filter(function (el) {
                     if (el.id == $state.params.Id) {
                         console.log(el);
@@ -1122,8 +1121,8 @@ angular.module('saratoga.controllers', [])
                     }
                 });
             }
-            
-            
+
+
 
         }, function (error) {
             $ionicLoading.hide();
@@ -1270,8 +1269,8 @@ angular.module('saratoga.controllers', [])
         });
     }
 
-    $scope.checkConnect = function (connection,type) {
-       
+    $scope.checkConnect = function (connection, type) {
+
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
@@ -1281,8 +1280,7 @@ angular.module('saratoga.controllers', [])
         }).then(function (result) {
             $ionicLoading.hide();
             connection.connected = result.connected
-            if (type == "search")
-            {
+            if (type == "search") {
                 $scope.connections.push(connection);
                 $rootScope.connections = $scope.connections;
             }
@@ -1492,8 +1490,20 @@ angular.module('saratoga.controllers', [])
     $scope.lng = $rootScope.mapData.lng;
     $scope.title = $rootScope.mapData.title;
     $scope.address = $rootScope.mapData.address;
-
-    console.log($rootScope.mapData);
+    clocat = $cordovaGeolocation
+    $scope.cpos = null;
+    
+    
+    $scope.openLink = function () {
+        lat = 22.302756;
+        lng = 70.803194;
+        
+        console.log('https://maps.google.com?daddr='+$scope.address);
+        window.open('https://maps.google.com?daddr='+$scope.address, '_system');
+        return false;
+    }
+    
+   
 
     var options = {
         timeout: 10000,
@@ -1550,6 +1560,10 @@ angular.module('saratoga.controllers', [])
             tmp = false
         }
     });
+
+
+
+
 
 })
 
@@ -1780,7 +1794,7 @@ angular.module('saratoga.controllers', [])
 
 
     $scope.readNotes = function (note) {
-        
+
         if (!note.eventid && !note.is_read) {
             Data.get('api/saratogaapp/read_notification', {
                 notificationid: note.notificationid,
@@ -1801,17 +1815,16 @@ angular.module('saratoga.controllers', [])
                 });
             })
         }
-        
-        if (note.externallink)
-        {    
-             console.log(note.externallink);
-         
+
+        if (note.externallink) {
+            console.log(note.externallink);
+
             window.open(note.externallink, '_system');
-         
-            
+
+
             note.is_read = true
         }
-        
+
     }
 
     $scope.checkBadge = function (notifications) {
