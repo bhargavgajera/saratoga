@@ -1492,18 +1492,23 @@ angular.module('saratoga.controllers', [])
     $scope.address = $rootScope.mapData.address;
     clocat = $cordovaGeolocation
     $scope.cpos = null;
-    
-    
+
+
+
+
     $scope.openLink = function () {
-        lat = 22.302756;
-        lng = 70.803194;
-        
-        console.log('https://maps.google.com?daddr='+$scope.address);
-        window.open('https://maps.google.com?daddr='+$scope.address, '_system');
+        //console.log('https://maps.google.com?daddr='+$scope.address);
+        //window.open('https://maps.google.com?daddr='+$scope.address, '_system');
+        launchnavigator.navigate($scope.address, null, function () {
+            console.log("open navigation success")
+        }, function (error) {
+            console.log(error);
+        }, options);
+
         return false;
     }
-    
-   
+
+
 
     var options = {
         timeout: 10000,
