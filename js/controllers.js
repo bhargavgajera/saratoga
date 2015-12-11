@@ -937,6 +937,7 @@ angular.module('saratoga.controllers', [])
     $scope.showcomment = false;
     $scope.commentMsg = "";
     $scope.loaded = false;
+    $scope.redirecturl = SitePath;
 
     $ionicModal.fromTemplateUrl('templates/writecomment.html', function (modal) {
         $scope.taskModal = modal;
@@ -1239,7 +1240,7 @@ angular.module('saratoga.controllers', [])
     $scope.searchData;
     $scope.ConnectedList = true;
     $ionicListDelegate.closeOptionButtons();
-    $scope.connections;
+    $scope.connections = [];
     $rootScope.connections;
 
     $scope.doRefresh = function (startFrom) {
@@ -1255,7 +1256,7 @@ angular.module('saratoga.controllers', [])
             $scope.listConnect = result.connections
             $rootScope.listConnect = result.connections
 
-            $scope.connections = result.connections;
+            $scope.connections = result.connections || [];
             $rootScope.connections = result.connections;
         }, function (error) {
             $ionicLoading.hide();

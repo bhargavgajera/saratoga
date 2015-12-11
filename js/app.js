@@ -1,4 +1,5 @@
-var SitePath = 'http://developmentbox.co/saratoga/';
+//var SitePath = 'http://developmentbox.co/saratoga/';
+var SitePath = 'http://dev.discoversaratoga.org/';
 var root = null;
 
 

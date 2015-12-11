@@ -1,0 +1,30 @@
+<ion-view title="{{title}}" class="listing-page">
+    <div class="tabs-striped tabs-top tabs-color-royal">
+        <div class="tabs">
+            <a class="tab-item" ng-class="{true:'active'}[!favoriteList]" href="#/app/{{url}}s">
+                <i class="icon ion-person"></i>
+            </a>
+            <a class="tab-item" ng-class="{true:'active'}[favoriteList]" href="#/app/{{url}}s/true">
+                <i class="icon ion-ios-star" ></i>
+            </a>
+        </div>
+    </div>
+
+    <ion-content class="has-subheader">
+        <ion-list >
+            <ion-item class="item item-avatar item-icon-right" ng-repeat="list in lists | filter: {favorite : favoriteList}" href="#/app/{{url}}/{{list.id}}">
+                <img ng-src="{{list.image || 'img/noimage.jpg'}}">
+                <h2 class="assertive">{{favoriteList}}{{list.name}} </h2>
+                <p> <i class="ion-ios-location"></i> {{list.location}}</p>
+                <i class="icon ion-ios-arrow-forward circle royal"></i>
+                <ion-option-button class="button-royal" ng-click="checkfav(list)">
+                    <i class="icon" ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[list.favorite]"></i>
+                </ion-option-button>
+            </ion-item>
+
+            <ion-item ng-hide="(lists | filter: {favorite: favoriteList}).length">
+                No any {{Fav}} {{url}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>
