@@ -2,7 +2,7 @@
     <ion-pane class="intro-page">
         <ion-content has-bouncing="false">
             <ion-slide-box class="intro-slider">
-                <ion-slide ng-repeat="slide in slides">
+                <ion-slide ng-repeat="slide in slides track by $index">
                     <div class="slide">
                         <div class="box">
                             <img src="img/intro-logo.png" alt="" width="170">

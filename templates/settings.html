@@ -34,7 +34,7 @@
                     </lon-item>
 
                     <lon-item class="item item-toggle" ng-repeat="cat_setting in settings.categories">
-                        <h2 ng-bind="cat_setting.title"></h2>
+                        <h2 ng-bind-html="cat_setting.title"></h2>
                         <p class="uppercase" ng-show="cat_setting.status">on</p>
                         <p class="uppercase" ng-hide="cat_setting.status">off</p>
                         <label class="toggle toggle-royal">

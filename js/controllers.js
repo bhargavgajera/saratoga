@@ -2,6 +2,7 @@ angular.module('saratoga.controllers', [])
 
 
 .controller('homeCtrl', function ($scope, Data, $rootScope, $ionicLoading, $ionicSlideBoxDelegate) {
+    scope = $scope;
     $ionicLoading.show({
         template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
     });
@@ -39,7 +40,7 @@ angular.module('saratoga.controllers', [])
 
     $rootScope.displayName = $rootScope.userData.displayname;
     $rootScope.Avatar = $rootScope.userData.avatar;
-    $scope.role = $rootScope.userData.role != "subscriber";
+    $scope.role = $rootScope.userData.role == "saratoga_member";
     $scope.logout = function () {
         console.log("test");
 
@@ -133,7 +134,8 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        $cordovaOauth.facebook("701002373339861", ["email", "user_location", "public_profile"]).then(function (result) {
+        //701002373339861
+        $cordovaOauth.facebook("913249695424669", ["email", "user_location", "public_profile"]).then(function (result) {
             console.log("fb");
             console.log(result);
             Data.get("api/user/fb_connect", {
