@@ -1791,7 +1791,7 @@ angular.module('saratoga.controllers', [])
     scope = $scope;
 
     $scope.timestamp = function (time) {
-        var utcTimezone = ($scope.timezoneoffset*100)
+        var utcTimezone = ($scope.timezoneoffset*100 )
         date = new Date(time + " UTC" + utcTimezone);
         return moment(date).fromNow();
     }
