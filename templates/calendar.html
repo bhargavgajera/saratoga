@@ -23,7 +23,7 @@
                         <button class="day">Sat</button>
                     </div>
                     <div class ="week" ng-repeat="week in weeks">
-                        <button class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected), eventday : day.eventStatus.eventDay,subevent:day.eventStatus.subEvent,favevent:day.eventStatus.favEvent }" ng-click="select(day)" ng-repeat="day in week.days"><span>{{day.number}} </span></button>
+                        <button class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected), eventday : day.eventStatus.eventDay,subevent:day.eventStatus.subEvent,favevent:day.eventStatus.favEvent,olddate:day.oldDate }" ng-click="select(day)" ng-repeat="day in week.days"><span>{{day.number}} </span></button>
                     </div>
                 </div>
                 <ion-list class="event_lists">
@@ -33,7 +33,7 @@
                          </ion-item>
                     <ion-item class="item item-avatar item-icon-right" href="#/app/event/{{list.id}}">
                         <img ng-src="{{list.image || 'img/noimage.jpg'}}">
-                        <h2 class="royal">{{favoriteList}}{{list.name}} </h2>
+                        <h2 class="royal" ng-bind-html="favoriteList+list.name"></h2>
                         <p> <i class="ion-clock"></i> {{list.sartTime}} {{list.location}}</p>
                         <i class="icon ion-ios-arrow-forward circle royal"></i>
                         <ion-option-button class="button-royal" ng-click="checkfav(list)">

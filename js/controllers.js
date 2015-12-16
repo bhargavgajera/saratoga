@@ -863,6 +863,8 @@ angular.module('saratoga.controllers', [])
 
     $scope.catId = $state.params.catId;
 
+
+
     $ionicListDelegate.closeOptionButtons()
 
 
@@ -872,7 +874,10 @@ angular.module('saratoga.controllers', [])
         $scope.lists = null;
     }
 
-    if ($state.current.name == "app.members" && $scope.lists == null) {
+    $scope.doRefresh = function () {
+
+
+        // if ($state.current.name == "app.members" && $scope.lists == null) {
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
@@ -881,22 +886,24 @@ angular.module('saratoga.controllers', [])
             member_cat: $scope.catId,
             user: $rootScope.userData.id
         }).then(function (result) {
-            $ionicLoading.hide();
-            $scope.lists = result.members;
+
+            $scope.lists = result.members || [];
             $rootScope.members = result.members;
             $rootScope.catId = $scope.catId;
             console.log(result);
         }, function (error) {
-            $ionicLoading.hide();
-            console.log(error);
+
             $ionicPopup.alert({
                 title: 'Error',
                 template: error
             });
+        }).finally(function () {
+            $ionicLoading.hide();
+            $scope.$broadcast('scroll.refreshComplete');
         });
+        //  }
+
     }
-
-
     $scope.checkfav = function (Member) {
         console.log(Member);
         $ionicLoading.show({
@@ -918,6 +925,9 @@ angular.module('saratoga.controllers', [])
         });
 
     }
+
+    $scope.doRefresh()
+
 })
 
 
@@ -1172,17 +1182,17 @@ angular.module('saratoga.controllers', [])
         Data.get('api/saratogaapp/get_faviourites', {
             user: $rootScope.userData.id
         }).then(function (result) {
-            $ionicLoading.hide();
-            $scope.favourites = result.favourites;
+
+            $scope.favourites = result.favourites || [];
             $rootScope.favourites = result.favourites;
         }, function (error) {
-            $ionicLoading.hide();
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
                 template: error
             });
         }).finally(function () {
+            $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
         });
     }
@@ -1242,8 +1252,8 @@ angular.module('saratoga.controllers', [])
     $scope.searchData;
     $scope.ConnectedList = true;
     $ionicListDelegate.closeOptionButtons();
-    $scope.connections = [];
-    $rootScope.connections;
+    // $scope.connections = [];
+    // $rootScope.connections;
 
     $scope.doRefresh = function (startFrom) {
         console.log("start : " + startFrom);
@@ -1253,21 +1263,21 @@ angular.module('saratoga.controllers', [])
         Data.get('api/saratogaapp/get_connection', {
             user: $rootScope.userData.id,
         }).then(function (result) {
-            $ionicLoading.hide();
+
             console.log(result);
-            $scope.listConnect = result.connections
+            $scope.listConnect = result.connections || []
             $rootScope.listConnect = result.connections
 
             $scope.connections = result.connections || [];
             $rootScope.connections = result.connections;
         }, function (error) {
-            $ionicLoading.hide();
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
                 template: error
             });
         }).finally(function () {
+            $ionicLoading.hide();
             $scope.$broadcast('scroll.refreshComplete');
         });
     }
@@ -1284,9 +1294,22 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             connection.connected = result.connected
             if (type == "search") {
-                $scope.connections.push(connection);
+                var cnt = 0;
+                angular.forEach($scope.connections, function (el, index) {
+                    
+                    if (el.ID == connection.ID) {
+                        el.connected = result.connected
+                        cnt++;
+                    }
+                });
+
+                if (cnt == 0) {
+                    $scope.connections.push(connection);
+                }
+
                 $rootScope.connections = $scope.connections;
             }
+
         }, function (error) {
             $ionicLoading.hide();
             console.log(error);
@@ -1322,7 +1345,7 @@ angular.module('saratoga.controllers', [])
             console.log(result);
             $ionicLoading.hide();
             $scope.formsubmit = true;
-            $scope.searchConnect = result.connections;
+            $scope.searchConnect = result.connections || [];
             $rootScope.searchConnect = result.connections;
         }, function (error) {
             $ionicLoading.hide();
@@ -1692,7 +1715,7 @@ angular.module('saratoga.controllers', [])
 
         $scope.select = function (day) {
 
-            if (day.eventStatus.eventDay) {
+            if (day.eventStatus.eventDay && !day.oldDate) {
                 $scope.selected = day.date;
                 $scope.todayVal = day.date.valueOf();
                 //console.log("todayVal : " + todayVal);
@@ -1726,6 +1749,7 @@ angular.module('saratoga.controllers', [])
             date = start.clone(),
             monthIndex = date.month(),
             count = 0;
+
         while (!done) {
             $scope.weeks.push({
                 days: _buildWeek(date.clone(), month)
@@ -1740,18 +1764,22 @@ angular.module('saratoga.controllers', [])
 
         var days = [];
         for (var i = 0; i < 7; i++) {
+           
             days.push({
                 name: date.format("dd").substring(0, 1),
                 number: date.date(),
                 isCurrentMonth: date.month() === month.month(),
                 isToday: date.isSame(new Date(), "day"),
                 eventStatus: checkEvents(date),
-                date: date
+                date: date,
+                oldDate: date._d < moment("00-00-00", "HH:mm:ss")._d
             });
+          
             date = date.clone();
             date.add(1, "d");
             // console.log(days);
         }
+
         return days;
     }
 
@@ -1791,7 +1819,7 @@ angular.module('saratoga.controllers', [])
     scope = $scope;
 
     $scope.timestamp = function (time) {
-        var utcTimezone = ($scope.timezoneoffset*100 )
+        var utcTimezone = ($scope.timezoneoffset * 100)
         date = new Date(time + " UTC" + utcTimezone);
         return moment(date).fromNow();
     }

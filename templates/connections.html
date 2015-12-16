@@ -26,7 +26,7 @@
                 </ion-option-button>
             </ion-item>
 
-            <ion-item ng-hide="(connections | filter: {connected: true}).length">
+            <ion-item ng-show="(connections | filter: {connected: true}).length < 1">
                 There are no connection available
             </ion-item>
         </ion-list> 
@@ -45,7 +45,7 @@
                 </ion-option-button>
             </ion-item>
 
-            <ion-item ng-hide="(searchConnect).length">
+            <ion-item ng-show="(searchConnect).length < 1">
                 There are no search result available
             </ion-item>
         </ion-list>

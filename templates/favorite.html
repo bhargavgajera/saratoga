@@ -29,7 +29,7 @@
                 </ion-option-button>
             </ion-item>
 
-            <ion-item ng-hide="(favourites | filter: {type: favoriteList,favorite:true}).length">
+            <ion-item ng-show="(favourites | filter: {type: favoriteList,favorite:true}).length < 1 ">
                 You do not have any favorites
             </ion-item>
         </ion-list>
