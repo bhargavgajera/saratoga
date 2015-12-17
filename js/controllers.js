@@ -1643,7 +1643,6 @@ angular.module('saratoga.controllers', [])
 
 
     $scope.checkDate = function (date, index, multiday) {
-        console.log(date + " --- " + multiday + " --- " + $scope.oldDate);
         if (index == 0) {
             $scope.oldDate = ""
         };
@@ -1707,6 +1706,7 @@ angular.module('saratoga.controllers', [])
 
     $rootScope.setCalendar = function () {
         $scope.month = $scope.selected.clone();
+        console.log($scope.month);
         var start = $scope.selected.clone();
         start.date(1);
         _removeTime(start.day(0));
@@ -1715,7 +1715,7 @@ angular.module('saratoga.controllers', [])
 
         $scope.select = function (day) {
 
-            if (day.eventStatus.eventDay && !day.oldDate) {
+            if (day.eventStatus.eventDay) {
                 $scope.selected = day.date;
                 $scope.todayVal = day.date.valueOf();
                 //console.log("todayVal : " + todayVal);
@@ -1772,7 +1772,7 @@ angular.module('saratoga.controllers', [])
                 isToday: date.isSame(new Date(), "day"),
                 eventStatus: checkEvents(date),
                 date: date,
-                oldDate: date._d < moment("00-00-00", "HH:mm:ss")._d
+               // oldDate: date._d < moment("01 00-00-00", "DD HH:mm:ss")._d
             });
           
             date = date.clone();

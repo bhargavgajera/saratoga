@@ -375,20 +375,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   vertical-align: middle;
 }
 .calendar > div.header > i {
-  float: left;
   width: 40px;
   font-size: 1.125em;
   font-weight: bold;
-  position: relative;
+  position: absolute;
   padding: 0 10px;
   cursor: pointer;
+  
 }
 .calendar > div.header > i.left {
   text-align: left;
+  left: 10px;
 }
 .calendar > div.header > i.right {
   text-align: right;
   margin-left: -40px;
+    right: 10px;
 }
 .calendar > div.header > span {
   float: left;
@@ -397,7 +399,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   text-transform: uppercase;
   font-family: "HelveticaNeueLight";
   padding-left: 40px;
-  margin-left: -40px;
   text-align: center;
   padding-right: 40px;
   color: inherit;

@@ -9,7 +9,8 @@
             <div class="calender-page" ng-class="{loaded:'loaded'}">
                 <div class="calendar">
                     <div class="header">
-                        <i class="left icon ion-chevron-left" ng-click="previous()"></i>
+                        <i class="left icon ion-chevron-left ng-hide" ng-click="previous()" ng-hide="month.isSame(day,'month')" ></i>
+                        
                         <span>{{month.format("MMMM, YYYY")}}</span>
                         <i class="right icon ion-chevron-right" ng-click="next()"></i>
                     </div>
@@ -23,7 +24,7 @@
                         <button class="day">Sat</button>
                     </div>
                     <div class ="week" ng-repeat="week in weeks">
-                        <button class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected), eventday : day.eventStatus.eventDay,subevent:day.eventStatus.subEvent,favevent:day.eventStatus.favEvent,olddate:day.oldDate }" ng-click="select(day)" ng-repeat="day in week.days"><span>{{day.number}} </span></button>
+                        <button class="day" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected), eventday : day.eventStatus.eventDay,subevent:day.eventStatus.subEvent,favevent:day.eventStatus.favEvent}" ng-click="select(day)" ng-repeat="day in week.days"><span>{{day.number}} </span></button>
                     </div>
                 </div>
                 <ion-list class="event_lists">
