@@ -603,11 +603,6 @@ angular.module('saratoga.controllers', [])
 
 })
 
-
-
-
-
-
 .controller('eventdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing) {
 
     root = $rootScope;
@@ -672,7 +667,7 @@ angular.module('saratoga.controllers', [])
                     if (result.comment_added) {
                         $ionicPopup.alert({
                             title: 'Thankyou For Comment :)',
-                            template: "Your comment has been submitted successfully, you can see it after admin's approval"
+                            template: "our comment has been successfully submitted and will be viewable after it has been screened for appropriateness."
                         });
                     }
 
@@ -823,7 +818,7 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('categoryCtrl', function ($scope, $state, Data, $rootScope, $ionicLoading) {
+.controller('categoryCtrl', function ($scope, $state, Data, $rootScope, $ionicLoading,$ionicPopup) {
     root = $rootScope;
     console.log(typeof $rootScope.categories == "undefined");
     $scope.categories = $rootScope.categories;
@@ -989,7 +984,7 @@ angular.module('saratoga.controllers', [])
                     if (result.comment_added) {
                         $ionicPopup.alert({
                             title: 'Thankyou For Comment :)',
-                            template: "Your comment has been submitted successfully, you can see it after admin's approval"
+                            template: "our comment has been successfully submitted and will be viewable after it has been screened for appropriateness."
                         });
                     }
 
