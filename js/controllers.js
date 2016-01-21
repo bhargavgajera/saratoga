@@ -666,8 +666,8 @@ angular.module('saratoga.controllers', [])
                     console.log(result);
                     if (result.comment_added) {
                         $ionicPopup.alert({
-                            title: 'Thankyou For Comment :)',
-                            template: "our comment has been successfully submitted and will be viewable after it has been screened for appropriateness."
+                            title: 'Thank you For Comment :)',
+                            template: "Your comment has been successfully submitted and will be viewable after it has been screened for appropriateness."
                         });
                     }
 
@@ -983,8 +983,8 @@ angular.module('saratoga.controllers', [])
                     console.log(result);
                     if (result.comment_added) {
                         $ionicPopup.alert({
-                            title: 'Thankyou For Comment :)',
-                            template: "our comment has been successfully submitted and will be viewable after it has been screened for appropriateness."
+                            title: 'Thank you For Comment :)',
+                            template: "Your comment has been successfully submitted and will be viewable after it has been screened for appropriateness."
                         });
                     }
 
@@ -1027,11 +1027,12 @@ angular.module('saratoga.controllers', [])
     $ionicLoading.show({
         template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
     });
-    // member:11758
+    
     Data.get('api/saratogaapp/get_member_detail', {
         member: $scope.memberId,
         user: $rootScope.userData.id
     }).then(function (result) {
+      
         $ionicLoading.hide();
         $scope.memberData = result.member;
         $scope.loaded = true;
