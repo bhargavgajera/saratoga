@@ -259,13 +259,13 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                console.log(notification);
                 
                 
-                if (notification.alert) {
+               /* if (notification.alert) {
                    // navigator.notification.alert(notification.alert);
                     $ionicPopup.alert({
                         title: 'Notification',
                         template: notification.alert
                     });
-                }
+                }*/
 
                 if (notification.sound) {
                    // var snd = new Media(event.sound);

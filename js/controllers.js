@@ -1068,13 +1068,9 @@ angular.module('saratoga.controllers', [])
 
 
     $scope.timestamp = function (time) {
-        date = new Date(time + " UTC" + $scope.timezoneoffset);
-        utc = date.getTime() + (date.getTimezoneOffset() * 60000);
-        var d = new Date()
-        var n = d.getTimezoneOffset();
-        localoffset = n / 60 * -1
-        newDate = new Date(utc + (3600000 * localoffset));
-        return moment(newDate).fromNow();
+        var utcTimezone = ($scope.timezoneoffset*100)
+        date = new Date(time + " UTC" + utcTimezone);
+        return moment(date).fromNow();
     }
 
 
@@ -1816,7 +1812,7 @@ angular.module('saratoga.controllers', [])
 
     $scope.timestamp = function (time) {
         var utcTimezone = ($scope.timezoneoffset * 100)
-        date = new Date(time + " UTC" + utcTimezone);
+        date = new Date(time);
         return moment(date).fromNow();
     }
 
