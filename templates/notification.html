@@ -11,7 +11,7 @@
 is_read}">
                     <h3 ng-bind-html="list.title"></h3>
                     <p ng-bind="list.message" ng-if="list.message"></p>
-                    <p class="time"> <i class="ion-android-time"></i> <span ng-bind="timestamp(list.notification_date)"></span></p>
+                    <p class="time"> <i class="ion-android-time"></i> <span ng-bind="timestamp(list.notification_date,list.curruntdate)"></span></p>
                     <img class="box-img" width="60" ng-class="{'read':list.	
 is_read}" ng-src="{{list.event_thumb}}" ng-if="list.event_thumb" alt="">
                     <i ng-if="list.pageurl" class="icon ion-ios-arrow-forward  assertive"></i>

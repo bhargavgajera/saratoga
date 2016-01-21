@@ -1810,10 +1810,12 @@ angular.module('saratoga.controllers', [])
     root = $rootScope;
     scope = $scope;
 
-    $scope.timestamp = function (time) {
-        var utcTimezone = ($scope.timezoneoffset * 100)
-        date = new Date(time);
-        return moment(date).fromNow();
+    $scope.timestamp = function (ntime,ctime) {
+        Ndate = new Date(ntime);
+        Cdate = new Date(ctime);
+        Nmoment = moment(Ndate);
+        Cmoment = moment(Cdate);
+        return Nmoment.from(Cmoment);
     }
 
 
