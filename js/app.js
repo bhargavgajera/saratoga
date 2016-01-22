@@ -1,6 +1,7 @@
 //var SitePath = 'http://developmentbox.co/saratoga/';
 //var SitePath = 'http://dev.discoversaratoga.org/';
-var SitePath = 'http://discoversaratoga.org/live/';
+//var SitePath = 'http://discoversaratoga.org/live/';
+var SitePath = 'http://discoversaratoga.org/';
 
 var root = null;
 
@@ -211,7 +212,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     
                     if (notification.payload.page != "") {
                         document.location.hash = notification.payload.page;
-                    } else if (window.localStorage.getItem("userData") == null) {
+                    } else if (window.localStorage.getItem("userData") != null) {
                         document.location.hash = "#/app/notifications";
                     } else {
                         document.location.hash = "#/home";
@@ -283,7 +284,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                 
                 if (notification.link != "") {
                         document.location.hash = notification.link;
-                    } else if (window.localStorage.getItem("userData") == null) {
+                    } else if (window.localStorage.getItem("userData") != null) {
                         document.location.hash = "#/app/notifications";
                     } else {
                         document.location.hash = "#/home";

@@ -1583,13 +1583,7 @@ angular.module('saratoga.controllers', [])
             tmp = false
         }
     });
-
-
-
-
-
 })
-
 
 .controller('calenderCtrl', function ($scope, $state, $rootScope, Data, $ionicLoading, $ionicPopup, $ionicListDelegate, $ionicScrollDelegate) {
 
