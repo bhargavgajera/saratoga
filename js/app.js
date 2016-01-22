@@ -34,7 +34,6 @@ angular.module('ngIOS9UIWebViewPatch', ['ng']).config(['$provide', function($pro
           pendingLocationUrl = arguments[0];
           return originalUrlFn.apply(browser, arguments);
         }
-
         return pendingLocationUrl || originalUrlFn.apply(browser, arguments);
       };
 

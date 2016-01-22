@@ -156,6 +156,9 @@ input {font-family: "HelveticaNeue"; }
 .form-register .input-label { color: #000;}
 .form-register .item-input { padding-right: 16px;}
 .form-register .item-input input[disabled] { color:#888; }
+.form-register .checkbox input:before, .form-register .checkbox-icon:before{ border-color: #387EF5;}
+
+
 .add-pic { padding:20px 0; text-align: center;}
 .add-pic .person { padding: 20px; background: #7272b8; display: inline-block; border-radius: 50%; position: relative;}
 .add-pic .person .photo-icon { font-size: 50px; border-radius: 50%; border:solid 2px #fff; width: 50px; height: 50px;color: #fff; display: block; overflow: hidden; line-height: 56px;}

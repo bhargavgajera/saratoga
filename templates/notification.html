@@ -16,24 +16,18 @@ is_read}">
 is_read}" ng-src="{{list.event_thumb}}" ng-if="list.event_thumb" alt="">
                     <i ng-if="list.pageurl" class="icon ion-ios-arrow-forward  assertive"></i>
                 </ion-item>
+                <ion-item ng-show="notifications.length == 0 && ispasschange != 1 ">
+                <h3>No notification available</h3>
+            </ion-item>
+            <ion-item ng-show="ispasschange" class="item-text-wrap item-icon-right">
+               <a class="item-content" ng-href="#/app/event/13115" href="#/app/profile">
+                    
+                    <h3>It  is recommended to you to chanage your app password.</h3>
+                    <i class="icon ion-ios-arrow-forward  assertive"></i>
+                </a>
+            </ion-item>
+            
             </ion-list>
-
-            <!--<ion-list>
-                    <ion-item class="item item-avatar item-icon-right item-text-wrap" href="#/app/event/1">
-                        <img src="img/photos/list-image-1.jpg">
-                        <h3><mark>Martin</mark> and <mark>2 other Friends</mark> have  added you  to the their circle! you have ..</h3>
-                        <p> <i class="ion-android-time"></i> A Few Seconds ago</p>
-                        <i class="icon ion-ios-arrow-forward  assertive"></i>
-
-                    </ion-item>
-                    <ion-item class="item item-avatar item-icon-right item-text-wrap has-image" href="#/app/event/2">
-                        <img src="img/photos/list-image-2.jpg">
-                        <h3><mark>Jade Jordan</mark> posted a picture on your timeline.</h3>
-                        <p> <i class="ion-android-time"></i> 2 Hours ago</p>
-                        <img class="box-img" width="60" src="img/photos/list-image-9.jpg" alt="">
-                        <i class="icon ion-ios-arrow-forward  assertive"></i>
-                    </ion-item>
-                </ion-list>-->
         </ion-content>
     </ion-pane>
 </ion-view>

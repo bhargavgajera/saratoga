@@ -135,7 +135,7 @@ angular.module('saratoga.controllers', [])
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
         //701002373339861
-        $cordovaOauth.facebook("913249695424669", ["email", "user_location", "public_profile"]).then(function (result) {
+        $cordovaOauth.facebook("933320593406929", ["email", "user_location", "public_profile"]).then(function (result) {
             console.log("fb");
             console.log(result);
             Data.get("api/user/fb_connect", {
@@ -415,7 +415,7 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('profileCtrl', function ($scope, $ionicActionSheet, $cordovaCamera, Data, $ionicPopup, $state, $cordovaFileTransfer, $rootScope, $ionicLoading, $ionicViewService) {
+.controller('profileCtrl', function ($scope, $ionicActionSheet, $cordovaCamera, Data, $ionicPopup, $state, $cordovaFileTransfer, $rootScope, $ionicLoading, $ionicViewService,$ionicScrollDelegate) {
     scope = $scope;
     root = $rootScope;
     var userData = $rootScope.userData;
@@ -559,9 +559,6 @@ angular.module('saratoga.controllers', [])
 
     };
 
-
-
-
     $scope.getuserInfo = function (userId) {
         Data.get("api/user/get_userinfo", {
             user_id: userId,
@@ -595,12 +592,6 @@ angular.module('saratoga.controllers', [])
                 });
             });
     }
-
-
-
-
-
-
 })
 
 .controller('eventdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing) {
@@ -847,6 +838,8 @@ angular.module('saratoga.controllers', [])
         } else {
             currentMenu.show = false;
         }
+        
+       
     };
 
 })
@@ -1799,10 +1792,13 @@ angular.module('saratoga.controllers', [])
 })
 
 
-.controller('notifyCtrl', function ($scope, $state, $rootScope, Data, $ionicLoading, $ionicPopup) {
+.controller('notifyCtrl', function ($scope, $state, $rootScope, Data, $ionicLoading, $ionicPopup,$ionicScrollDelegate) {
 
     root = $rootScope;
     scope = $scope;
+    
+    $scope.notifications = null;
+    $scope.ispasschange = $rootScope.userData.pwd_chnage_msg;
 
     $scope.timestamp = function (ntime,ctime) {
         Ndate = new Date(ntime);
@@ -1866,7 +1862,7 @@ angular.module('saratoga.controllers', [])
     }
 
 
-
+  
 
 
     $scope.doRefresh = function () {
@@ -1877,8 +1873,8 @@ angular.module('saratoga.controllers', [])
             console.log(result.timezoneoffset);
             $ionicLoading.hide();
             $scope.timezoneoffset = result.timezoneoffset;
-            $scope.notifications = result.notifications;
-            $rootScope.notifications = result.notifications;
+            $scope.notifications = result.notifications || [];
+            $rootScope.notifications = result.notifications || [];
             console.log(result);
             $scope.checkBadge($rootScope.notifications);
         }, function (error) {
