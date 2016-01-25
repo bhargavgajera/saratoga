@@ -292,7 +292,8 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         document.location.hash = "#/home";
                     }
                     
-                    
+                    $rootScope.$broadcast('updateNotification');    
+                
                     if (notification.externallink != "") {
                         console.log("click on push notification in ios : "+ notification.externallink)
                         window.open(notification.externallink, '_system');
