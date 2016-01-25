@@ -98,6 +98,8 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
     
 
     root = $rootScope;
+    console.log("root")
+    console.log(root)
     
    
     
@@ -217,6 +219,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         document.location.hash = "#/home";
                     }
                     
+                    $rootScope.$broadcast('updateNotification');
                     
                     if (notification.payload.externallink != "") {
                         window.open(notification.payload.externallink, '_system');
@@ -466,6 +469,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 
     .state('app.favorite', {
         url: '/favorite',
+        cache: false,
         views: {
             'menuContent': {
                 templateUrl: 'templates/favorite.html',

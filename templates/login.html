@@ -17,8 +17,8 @@ s<ion-view title="Log In">
                         <input type="text" placeholder="User Name" name="uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="data.username" required>
                         <i class="icon ion-person royal"></i>
                     </label>
-                    <label class="item item-input icon-password" ng-class="{error:(loginForm.password.$error.required || loginForm.password.$error.minlength || loginForm.password.$error.maxlength),errorview :(loginForm.$submitted || loginForm.password.$touched)}">
-                        <input type="password"  placeholder="Password"  name="password" ng-minlength="5" ng-maxlength="20" ng-model="data.password" required>
+                    <label class="item item-input icon-password" ng-class="{error:loginForm.password.$error.required ,errorview :(loginForm.$submitted || loginForm.password.$touched)}">
+                        <input type="password"  placeholder="Password"  name="password" ng-model="data.password" required>
                         <i class="icon ion-ios-locked royal"></i>
                     </label>
                     <button type="submit" class="button button-full button-royal no-border bold-text uppercase login-btn">
@@ -28,9 +28,9 @@ s<ion-view title="Log In">
                     
                     <a class="button button-clear button-dark underline" href="#/register" >Create My Account</a>
                     <a class="button button-clear button-dark underline " href="#/forgot"  >Forgot Password </a>
-                    <a class="button button-stable button-full fb-btn" ng-click="facebookLogin()">
+                    <!--<a class="button button-stable button-full fb-btn" ng-click="facebookLogin()">
   Connect with Facebook
-</a>
+</a>-->
              
       
                 </div>

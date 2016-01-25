@@ -5,8 +5,8 @@
             </ion-refresher>
 
             <ion-list>
-                 <!--| orderBy:'is_read'-->
-                <ion-item class="item item-avatar item-icon-right item-text-wrap" ng-class="{'has-image':list.event_thumb}"  ng-repeat="list in notifications" ng-href="{{list.pageurl || '#/app/notifications'}}" ng-click="readNotes(list)" >
+                <!--| orderBy:'is_read'-->
+                <ion-item class="item item-avatar item-icon-right item-text-wrap" ng-class="{'has-image':list.event_thumb}" ng-repeat="list in notifications" ng-href="{{list.pageurl || '#/app/notifications'}}" ng-click="readNotes(list)">
                     <img ng-src="{{list.avtar || img/noimage.jpg}}" ng-class="{'read':list.	
 is_read}">
                     <h3 ng-bind-html="list.title"></h3>
@@ -17,19 +17,16 @@ is_read}" ng-src="{{list.event_thumb}}" ng-if="list.event_thumb" alt="">
                     <i ng-if="list.pageurl" class="icon ion-ios-arrow-forward  assertive"></i>
                 </ion-item>
                 <ion-item ng-show="notifications.length == 0 && ispasschange != 1 ">
-                <h3>No notification available</h3>
-            </ion-item>
-            <ion-item ng-show="ispasschange" class="item-text-wrap item-icon-right">
-               <a class="item-content" ng-href="#/app/event/13115" href="#/app/profile">
-                    
-                    <h3>It  is recommended to you to chanage your app password.</h3>
-                    <i class="icon ion-ios-arrow-forward  assertive"></i>
-                </a>
-            </ion-item>
-            
+                    <h3>No notification available</h3>
+                </ion-item>
+                <ion-item ng-show="ispasschange" class="item-text-wrap item-icon-right">
+                    <a class="item-content" ng-href="#/app/event/13115" href="#/app/profile">
+                        <h3>It  is recommended to you to chanage your app password.</h3>
+                        <i class="icon ion-ios-arrow-forward  assertive"></i>
+                    </a>
+                </ion-item>
+
             </ion-list>
         </ion-content>
     </ion-pane>
 </ion-view>
-
-

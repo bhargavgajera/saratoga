@@ -1,10 +1,10 @@
 <ion-view title="Favorites" class="listing-page">
     <div class="tabs-striped tabs-top tabs-color-royal">
         <div class="tabs">
-            <a class="tab-item" ng-class="{true:'active'}[favoriteList == 'member']" ng-click="favoriteList = 'member'" >
+            <a class="tab-item" ng-class="{true:'active'}[favoriteList == 'member']" ng-click="updateScroll('member');" >
                 <i class="icon fa fa-building"></i>
             </a>
-            <a class="tab-item" ng-class="{true:'active'}[favoriteList == 'event']" ng-click="favoriteList = 'event'" >
+            <a class="tab-item" ng-class="{true:'active'}[favoriteList == 'event']" ng-click="updateScroll('event');" >
                 
                  <i class="icon fa fa-calendar"></i>
 

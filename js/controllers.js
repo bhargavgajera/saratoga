@@ -14,15 +14,14 @@ angular.module('saratoga.controllers', [])
             $scope.slides = result.slides;
             $rootScope.slides = result.slides;
             $ionicSlideBoxDelegate.update();
-
         } else {
             $scope.popup = $ionicPopup.alert({
                 title: 'Error',
                 template: result.error
             });
         }
-
     }, function (error) {
+        console.log(error);
         $ionicLoading.hide();
         $scope.popup.close();
         $scope.popup = $ionicPopup.alert({
@@ -36,7 +35,7 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('appCtrl', function ($scope, $state, $ionicModal, Data, $timeout, $rootScope, $filter, $ionicLoading, $ionicHistory) {
+.controller('appCtrl', function ($scope, $state, $ionicModal, Data, $timeout, $rootScope, $filter, $ionicLoading, $ionicHistory,$ionicPopup) {
 
     $rootScope.displayName = $rootScope.userData.displayname;
     $rootScope.Avatar = $rootScope.userData.avatar;
@@ -62,7 +61,7 @@ angular.module('saratoga.controllers', [])
                 $state.go('home', {}, {
                     reload: true
                 });
-                $rootScope.userData = $rootScope.events = $rootScope.categories = $rootScope.catId = $rootScope.members = $rootScope.connections = $rootScope.settings = undefined;
+                $rootScope.userData = $rootScope.events = $rootScope.categories = $rootScope.catId = $rootScope.members = $rootScope.connections = $rootScope.settings = $rootScope.searchresult = $rootScope.searchConnect = undefined;
             } else {
                 $scope.popup = $ionicPopup.alert({
                     title: 'Login failed!',
@@ -109,6 +108,8 @@ angular.module('saratoga.controllers', [])
             console.log("---------------")
             $ionicLoading.hide();
             if (result.status == "ok") {
+                $rootScope.userData = $rootScope.events = $rootScope.categories = $rootScope.catId = $rootScope.members = $rootScope.connections = $rootScope.settings = $rootScope.searchresult = $rootScope.searchConnect = undefined;
+                
                 window.localStorage.setItem("userData", JSON.stringify(result));
                 $rootScope.userData = result;
                 $state.go('app.notifications', null, {
@@ -123,6 +124,7 @@ angular.module('saratoga.controllers', [])
         }, function (error) {
             $ionicLoading.hide();
             $scope.popup.close();
+            console.log(error);
             $scope.popup = $ionicPopup.alert({
                 title: 'Login failed!',
                 template: 'Something Went Wrong!'
@@ -147,6 +149,8 @@ angular.module('saratoga.controllers', [])
                 console.log(result);
                 $ionicLoading.hide();
                 if (result.status == "ok") {
+                    $rootScope.userData = $rootScope.events = $rootScope.categories = $rootScope.catId = $rootScope.members = $rootScope.connections = $rootScope.settings = $rootScope.searchresult = $rootScope.searchConnect = undefined;
+                    
                     window.localStorage.setItem("userData", JSON.stringify(result));
                     $rootScope.userData = result;
                     $state.go('app.notifications', null, {
@@ -161,6 +165,7 @@ angular.module('saratoga.controllers', [])
 
             }, function (error) {
                 $ionicLoading.hide();
+                console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
                     template: error
@@ -207,6 +212,7 @@ angular.module('saratoga.controllers', [])
                 });
             }
         }, function (error) {
+            console.log(error);
             $scope.popup.close();
             $scope.popup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -353,7 +359,8 @@ angular.module('saratoga.controllers', [])
                         }
                     },
                     function (error) {
-                        $ionicLoading.hide()
+                        $ionicLoading.hide();
+                    console.log(error);
                         $ionicPopup.alert({
                             title: 'Error',
                             template: error
@@ -367,6 +374,7 @@ angular.module('saratoga.controllers', [])
                 });
             }
         }, function (error) {
+            console.log(error);
             $ionicLoading.hide();
             $ionicPopup.alert({
                 title: 'Error',
@@ -385,6 +393,8 @@ angular.module('saratoga.controllers', [])
         }).then(function (result) {
                 $ionicLoading.hide();
                 if (result.status == "ok") {
+                    $rootScope.userData = $rootScope.events = $rootScope.categories = $rootScope.catId = $rootScope.members = $rootScope.connections = $rootScope.settings = $rootScope.searchresult = $rootScope.searchConnect = undefined;
+                    
                     window.localStorage.setItem("userData", JSON.stringify(result));
                     $rootScope.userData = result;
                     $state.go('app.notifications', null, {
@@ -398,6 +408,7 @@ angular.module('saratoga.controllers', [])
                 }
             },
             function (error) {
+            console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
                     template: error
@@ -475,6 +486,7 @@ angular.module('saratoga.controllers', [])
                     image.src = imageData;
                     $scope.imagePath = imageData;
                 }, function (error) {
+                    console.log(error);
                     $ionicPopup.alert({
                         title: 'Error',
                         template: error
@@ -550,6 +562,7 @@ angular.module('saratoga.controllers', [])
                 }
             },
             function (error) {
+            console.log(error);
                 $ionicLoading.hide()
                 $ionicPopup.alert({
                     title: 'Error',
@@ -586,6 +599,7 @@ angular.module('saratoga.controllers', [])
                 }
             },
             function (error) {
+            console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
                     template: error
@@ -822,6 +836,7 @@ angular.module('saratoga.controllers', [])
             $rootScope.categories = result.categories;
             $ionicLoading.hide();
         }, function (error) {
+            console.log(error);
             $ionicLoading.hide();
             $ionicPopup.alert({
                 title: 'Error',
@@ -880,7 +895,7 @@ angular.module('saratoga.controllers', [])
             $rootScope.catId = $scope.catId;
             console.log(result);
         }, function (error) {
-
+            console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
                 template: error
@@ -1150,15 +1165,13 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('favoriteCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicListDelegate) {
+.controller('favoriteCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicListDelegate,$ionicScrollDelegate) {
 
     root = $rootScope;
     scope = $scope;
-
+    $scope.favourites = null;
     $scope.favoriteList = 'member';
-
-
-
+    
 
     $scope.doRefresh = function (startFrom) {
         $ionicLoading.show({
@@ -1167,7 +1180,6 @@ angular.module('saratoga.controllers', [])
         Data.get('api/saratogaapp/get_faviourites', {
             user: $rootScope.userData.id
         }).then(function (result) {
-
             $scope.favourites = result.favourites || [];
             $rootScope.favourites = result.favourites;
         }, function (error) {
@@ -1182,7 +1194,12 @@ angular.module('saratoga.controllers', [])
         });
     }
 
-
+    
+    $scope.updateScroll = function(currentTab){
+        $scope.favoriteList = currentTab;
+        $ionicScrollDelegate.resize()
+    }
+    
     $scope.checkfav = function (List) {
 
         $ionicLoading.show({
@@ -1222,8 +1239,6 @@ angular.module('saratoga.controllers', [])
             });
         });
     }
-
-
     $scope.doRefresh();
 })
 
@@ -1287,7 +1302,6 @@ angular.module('saratoga.controllers', [])
                         cnt++;
                     }
                 });
-
                 if (cnt == 0) {
                     $scope.connections.push(connection);
                 }
@@ -1834,10 +1848,7 @@ angular.module('saratoga.controllers', [])
 
         if (note.externallink) {
             console.log(note.externallink);
-
             window.open(note.externallink, '_system');
-
-
             note.is_read = true
         }
 
@@ -1893,7 +1904,14 @@ angular.module('saratoga.controllers', [])
         template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
     });
 
-    $scope.doRefresh()
+    $scope.doRefresh();
+    
+     $scope.$on('updateNotification', function (event, args) {
+        $scope.doRefresh();
+     });
+    
+   
+    
 
     if (typeof $rootScope.settings == "undefined") {
         Data.get('api/saratogaapp/get_settings', {
@@ -1981,7 +1999,7 @@ angular.module('saratoga.controllers', [])
 
         }, function (error) {
             $ionicLoading.hide();
-
+            console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
                 template: error
