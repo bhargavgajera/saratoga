@@ -17,9 +17,9 @@
                 <a class="button icon-top ion-ios-location button-royal no-radius no-border" ng-click="gotoMap(eventData.lat,eventData.lng,eventData.title,eventData.address)">Map</a>
             </div>
             <div class="button-bar padding-left-10 padding-right-10">
-                <a class="button icon-top ion-compose button-calm no-radius no-border" ng-click="showcomment = true">{{eventData.total_comment}} Comments</a>
+                <a class="button icon-top ion-compose button-calm no-radius no-border" ng-click="updateScreen(true)">{{eventData.total_comment}} Comments</a>
                 <a class="button icon-top ion-android-share button-royal no-border" ng-click="shareLink(eventData.title,eventData.share_url)">Share</a>
-                <a class="button icon-top ion-ios-albums-outline button-calm no-radius no-border" ng-click="showcomment = false">More</a>
+                <a class="button icon-top ion-ios-albums-outline button-calm no-radius no-border" ng-click="updateScreen(false)">More</a>
             </div>
             <div class="content padding-10" ng-hide="showcomment">
                 

@@ -104,7 +104,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
    
     
     var androidConfig = {
-        "senderID": "33448154622",
+        "senderID": "333853412042",
     };
     
     var iosConfig = {
@@ -406,6 +406,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 
     .state('app.stats', {
         url: '/stats',
+        cache: false,
         views: {
             'menuContent': {
                 templateUrl: 'templates/stats.html',
@@ -490,27 +491,6 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
     })
 
 
-    .state('app.connections', {
-        url: '/connections',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/connections.html',
-                controller: 'connectionCtrl'
-            }
-        }
-    })
-    
-   /* .state('app.connections', {
-        url: '/connections/:Search',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/connections.html',
-                controller: 'connectionCtrl'
-            }
-        }
-    })*/
-    
-
     .state('app.calendar', {
         url: '/calendar',
         views: {
@@ -532,9 +512,18 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
         }
 
     })
-
-
-
+    
+    
+   /* .state('app.connections', {
+        url: '/connections',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/connections.html',
+                controller: 'connectionCtrl'
+            }
+        }
+    })*/
+    
 })
 
 

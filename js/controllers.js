@@ -40,6 +40,16 @@ angular.module('saratoga.controllers', [])
     $rootScope.displayName = $rootScope.userData.displayname;
     $rootScope.Avatar = $rootScope.userData.avatar;
     $scope.role = $rootScope.userData.role == "saratoga_member";
+    
+    
+    $scope.openLink = function (weblink) {
+        console.log(weblink);
+        window.open(weblink, '_system');
+        return false;
+    }
+    
+    
+    
     $scope.logout = function () {
         console.log("test");
 
@@ -608,7 +618,7 @@ angular.module('saratoga.controllers', [])
     }
 })
 
-.controller('eventdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing) {
+.controller('eventdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing,$ionicScrollDelegate) {
 
     root = $rootScope;
     scope = $scope;
@@ -688,6 +698,13 @@ angular.module('saratoga.controllers', [])
 
     };
 
+    
+    $scope.updateScreen = function(status)
+    {
+        $scope.showcomment = status;
+        $ionicScrollDelegate.resize();
+    }
+    
     // Open our new task modal
     $scope.newComment = function () {
         $scope.taskModal.show();
@@ -823,7 +840,7 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('categoryCtrl', function ($scope, $state, Data, $rootScope, $ionicLoading,$ionicPopup) {
+.controller('categoryCtrl', function ($scope, $state, Data, $rootScope, $ionicLoading,$ionicPopup,$ionicScrollDelegate,$timeout) {
     root = $rootScope;
     console.log(typeof $rootScope.categories == "undefined");
     $scope.categories = $rootScope.categories;
@@ -844,7 +861,10 @@ angular.module('saratoga.controllers', [])
             });
         });
     }
-    $scope.toggleGroup = function (currentMenu) {
+    $scope.toggleGroup = function (currentMenu,index) {
+        //console.log(currentMenu.index($scope.categories));
+        var scrollPos = index * 80;
+        
         if (currentMenu.show == false) {
             angular.forEach($scope.categories, function (value, key) {
                 value.show = false;
@@ -853,6 +873,14 @@ angular.module('saratoga.controllers', [])
         } else {
             currentMenu.show = false;
         }
+        
+        $ionicScrollDelegate.resize();
+        
+        $timeout(function(){
+             $ionicScrollDelegate.scrollTo(0,scrollPos,true)
+        }, 300);
+        
+       
         
        
     };
@@ -941,7 +969,7 @@ angular.module('saratoga.controllers', [])
 
 
 
-.controller('memberdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing, $ionicSlideBoxDelegate, $sce) {
+.controller('memberdetailCtrl', function ($scope, $state, Data, $rootScope, $ionicPopup, $ionicLoading, $ionicModal, $cordovaSocialSharing, $ionicSlideBoxDelegate, $sce,$ionicScrollDelegate) {
 
     root = $rootScope;
     scope = $scope;
@@ -962,13 +990,18 @@ angular.module('saratoga.controllers', [])
     });
 
 
-
+    
     $scope.openLink = function (weblink) {
         console.log(weblink);
         window.open(weblink, '_system');
         return false;
     }
-
+    
+    $scope.updateScreen = function(status)
+    {
+        $scope.showcomment = status;
+        $ionicScrollDelegate.resize();
+    }
 
     $scope.videoUrl = function (link) {
         return $sce.trustAsResourceUrl(link);
@@ -1018,6 +1051,10 @@ angular.module('saratoga.controllers', [])
         $scope.taskModal.hide();
     };
 
+   
+    
+    
+    
     $scope.checkDate = function (date, index) {
 
         if (index == 0) {
