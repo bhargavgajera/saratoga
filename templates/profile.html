@@ -7,8 +7,8 @@
                     <div class="person" ng-hide="{{oldimage != null}}" ng-click="showDetails()"><i class="icon ion-person photo-icon"></i>
                         <i class="icon ion-paperclip clip"></i>
                     </div>
-                    <div class="userImage ng-hide" ng-show="{{oldimage != null}}" ng-click="showDetails()" style="background-image:url({{oldimage}})">
-                        
+                    <div class="userImage ng-hide" ng-show="{{oldimage != null}}" ng-click="showDetails()" >
+                        <img id="myImage" ng-src="{{oldimage}}" alt="">
                     </div>
                     <p class="uppercase padding-top" ng-click="showDetails()">add/change photo</p>
                 </div>
