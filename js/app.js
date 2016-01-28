@@ -65,7 +65,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 .run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
     $ionicPlatform.ready(function () {
         native = $cordovaNativeAudio;
-        $cordovaNativeAudio.preloadSimple('beep', 'audio/swip.mp3')
+        $cordovaNativeAudio.preloadComplex('beep', 'audio/swip.mp3',1,1)
             .then(function (msg) {
               console.log("play success");
               console.log(msg);
@@ -98,7 +98,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
     })
 })
 
-.run(function ($cordovaPush, $rootScope, $state, $ionicPopup, $cordovaNetwork, $cordovaPush, $cordovaDevice) {
+.run(function ($cordovaPush, $rootScope, $state, $ionicPopup, $cordovaNetwork, $cordovaPush, $cordovaDevice,$cordovaVibration) {
 
     console.log("$cordovaDevice")
     console.log($cordovaDevice)
@@ -219,8 +219,11 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     console.log("test");
                     console.log(notification);
                     
+                    if ($rootScope.settings.mobile[1].status) {
+                        $cordovaVibration.vibrate(500);
+                    }
                     if ($rootScope.settings.mobile[0].status) {
-                        navigator.notification.beep(2)
+                        navigator.notification.beep(1)
                     }
                     
                     if (notification.payload.page != "") {
@@ -283,8 +286,12 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     });
                 }*/
                 
+                if ($rootScope.settings.mobile[1].status) {
+                        $cordovaVibration.vibrate(500);
+                }
+                
                 if ($rootScope.settings.mobile[0].status) {
-                    navigator.notification.beep(2)
+                    navigator.notification.beep(1)
                 }
                 
                 if (notification.sound) {
