@@ -65,7 +65,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 .run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
     $ionicPlatform.ready(function () {
         native = $cordovaNativeAudio;
-        $cordovaNativeAudio.preloadSimple('beep', 'audio/swip.mp3').preloadSimple('click', 'audio/click.mp3')
+        $cordovaNativeAudio.preloadSimple('beep', 'audio/swip.mp3')
             .then(function (msg) {
               console.log("play success");
               console.log(msg);
@@ -219,6 +219,10 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     console.log("test");
                     console.log(notification);
                     
+                    if ($rootScope.settings.mobile[0].status) {
+                        navigator.notification.beep(2)
+                    }
+                    
                     if (notification.payload.page != "") {
                         document.location.hash = notification.payload.page;
                     } else if (window.localStorage.getItem("userData") != null) {
@@ -232,6 +236,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     if (notification.payload.externallink != "") {
                         window.open(notification.payload.externallink, '_system');
                     }
+                    
                     
                     
                     break;
@@ -277,7 +282,11 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         template: notification.alert
                     });
                 }*/
-
+                
+                if ($rootScope.settings.mobile[0].status) {
+                    navigator.notification.beep(2)
+                }
+                
                 if (notification.sound) {
                    // var snd = new Media(event.sound);
                    // snd.play();

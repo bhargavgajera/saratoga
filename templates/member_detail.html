@@ -62,28 +62,28 @@
 
                         <div class="row" ng-if="memberData.contact_email">
                             <div class="col col-50">Email :</div>
-                            <div class="col col-50"><a href="#" class="calm" ng-click="openLink('mailto:{{memberData.contact_email}}')">{{memberData.contact_email}}</a></div>
+                            <div class="col col-50"><a class="calm" ng-click="openLink('mailto:{{memberData.contact_email}}')">{{memberData.contact_email}}</a></div>
                         </div>
                         <div class="row" ng-if="memberData.weburl">
                             <div class="col col-50">Website :</div>
-                            <div class="col col-50"><a href="#" class="calm" ng-click="openLink(redirecturl+'referral?member={{memberId}}')" target="_blank">{{memberData.weburl}}</a></div>
+                            <div class="col col-50"><a class="calm" ng-click="openLink(redirecturl+'referral?member={{memberId}}')" target="_blank">{{memberData.weburl}}</a></div>
                          
                         </div>
                         <div class="row social" ng-if="memberData.social_site">
                             <div class="col col-50">Social :</div>
                             <div class="col col-50">
-                                <a href="#" ng-click="openLink('{{memberData.social_site.facebook}}')" ng-if="memberData.social_site.facebook" target="_blank" class="icon ion-social-facebook"></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.twitter}}')" ng-if="memberData.social_site.twitter" target="_blank" class="icon ion-social-twitter"></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.googleplus}}')" ng-if="memberData.social_site.googleplus" target="_blank" class="icon ion-social-googleplus"></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.pinterest}}')" ng-if="memberData.social_site.pinterest" target="_blank" class="icon ion-social-pinterest"></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.instagram}}')" ng-if="memberData.social_site.instagram" target="_blank" class="icon ion-social-instagram"></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.youtube}}')" ng-if="memberData.social_site.youtube" target="_blank" class="icon ion-social-youtube"></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.tripadvisor}}')" ng-if="memberData.social_site.tripadvisor" target="_blank" class="icon "><i class="fa fa-tripadvisor"></i></a>
-                                <a href="#" ng-click="openLink('{{memberData.social_site.opentable}}')" ng-if="memberData.social_site.opentable" target="_blank" class="icon"><img src="img/open-table.png" alt="open table"></a>
+                                <a ng-click="openLink('{{memberData.social_site.facebook}}')" ng-if="memberData.social_site.facebook" target="_blank" class="icon ion-social-facebook"></a>
+                                <a ng-click="openLink('{{memberData.social_site.twitter}}')" ng-if="memberData.social_site.twitter" target="_blank" class="icon ion-social-twitter"></a>
+                                <a ng-click="openLink('{{memberData.social_site.googleplus}}')" ng-if="memberData.social_site.googleplus" target="_blank" class="icon ion-social-googleplus"></a>
+                                <a ng-click="openLink('{{memberData.social_site.pinterest}}')" ng-if="memberData.social_site.pinterest" target="_blank" class="icon ion-social-pinterest"></a>
+                                <a ng-click="openLink('{{memberData.social_site.instagram}}')" ng-if="memberData.social_site.instagram" target="_blank" class="icon ion-social-instagram"></a>
+                                <a ng-click="openLink('{{memberData.social_site.youtube}}')" ng-if="memberData.social_site.youtube" target="_blank" class="icon ion-social-youtube"></a>
+                                <a ng-click="openLink('{{memberData.social_site.tripadvisor}}')" ng-if="memberData.social_site.tripadvisor" target="_blank" class="icon "><i class="fa fa-tripadvisor"></i></a>
+                                <a ng-click="openLink('{{memberData.social_site.opentable}}')" ng-if="memberData.social_site.opentable" target="_blank" class="icon"><img src="img/open-table.png" alt="open table"></a>
                             </div>
                         </div>
                     </div>
-                    <div class="member_detail" ng-bind-html="memberData.content"></div>
+                    <div class="member_detail" ng-bind-html="memberData.content | hrefToJS"></div>
                 </div>
                 <div class="comments" ng-show="showcomment">
                     <ion-list>

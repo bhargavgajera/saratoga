@@ -37,15 +37,15 @@
                     </div>
                     <div class="row" ng-if="eventData.organizer_phone">
                         <div class="col col-50">Phone :</div>
-                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('tel:{{eventData.organizer_phone}}')">{{eventData.organizer_phone}}</a></div>
+                        <div class="col col-50"><a class="calm" ng-click="openLink('tel:{{eventData.organizer_phone}}')">{{eventData.organizer_phone}}</a></div>
                     </div>
                     <div class="row" ng-if="eventData.organizer_email">
                         <div class="col col-50">Email :</div>
-                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('mailto:{{eventData.organizer_email}}')">{{eventData.organizer_email}}</a></div>
+                        <div class="col col-50"><a class="calm" ng-click="openLink('mailto:{{eventData.organizer_email}}')">{{eventData.organizer_email}}</a></div>
                     </div>
                     <div class="row" ng-if="eventData.eventURL">
                         <div class="col col-50">Event Website:</div>
-                        <div class="col col-50"><a class="calm"  href="#" ng-click="openLink('{{eventData.eventURL}}')" >Click Here</a></div>
+                        <div class="col col-50"><a class="calm" ng-click="openLink('{{eventData.eventURL}}')" >Click Here</a></div>
                     </div>
                     <div class="row">
                         <div class="col col-50">Event Start Date :</div>
@@ -57,7 +57,7 @@
                     </div>
                     
                     </div>
-                    <div class="member_detail" ng-bind-html="eventData.content">
+                    <div class="member_detail" ng-bind-html="eventData.content | hrefToJS">
                     </div>
             </div>
             <div class="comments" ng-show="showcomment">

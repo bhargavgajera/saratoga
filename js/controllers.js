@@ -759,7 +759,7 @@ angular.module('saratoga.controllers', [])
     $scope.gotoMap = function (lat, lng, title, address) {
         if (!lat || !lng) {
             $ionicPopup.alert({
-                title: 'Error',
+                title: 'Sorry!',
                 template: 'Event location not available'
             });
             return false;
@@ -1133,7 +1133,7 @@ angular.module('saratoga.controllers', [])
 
         if (!lat || !lng) {
             $ionicPopup.alert({
-                title: 'Error',
+                title: 'Sorry!',
                 template: 'Member location not available'
             });
             return false;
