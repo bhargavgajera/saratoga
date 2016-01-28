@@ -178,7 +178,7 @@ angular.module('saratoga.controllers', [])
                 console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
-                    template: error
+                    template: error.statusText || $rootScope.errorMSG
                 });
             });
         }, function (error) {
@@ -283,7 +283,7 @@ angular.module('saratoga.controllers', [])
                 }, function (error) {
                     $ionicPopup.alert({
                         title: 'Error',
-                        template: error
+                        template: error.statusText || $rootScope.errorMSG
                     });
                 });
             }
@@ -373,7 +373,7 @@ angular.module('saratoga.controllers', [])
                     console.log(error);
                         $ionicPopup.alert({
                             title: 'Error',
-                            template: error
+                            template: error.statusText || $rootScope.errorMSG
                         });
                     });
             } else {
@@ -388,7 +388,7 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     };
@@ -421,7 +421,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
-                    template: error
+                    template: error.statusText || $rootScope.errorMSG
                 });
             });
     }
@@ -576,7 +576,7 @@ angular.module('saratoga.controllers', [])
                 $ionicLoading.hide()
                 $ionicPopup.alert({
                     title: 'Error',
-                    template: error
+                    template: error.statusText || $rootScope.errorMSG
                 });
             });
 
@@ -612,7 +612,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
-                    template: error
+                    template: error.statusText || $rootScope.errorMSG
                 });
             });
     }
@@ -650,7 +650,7 @@ angular.module('saratoga.controllers', [])
         console.log(error);
         $ionicPopup.alert({
             title: 'Error',
-            template: error
+            template: error.statusText || $rootScope.errorMSG
         });
     });
 
@@ -691,7 +691,7 @@ angular.module('saratoga.controllers', [])
                     console.log(error);
                     $ionicPopup.alert({
                         title: 'Error',
-                        template: error
+                        template: error.statusText || $rootScope.errorMSG
                     });
                 });
         }
@@ -830,7 +830,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -861,7 +861,7 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.hide();
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -930,7 +930,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $ionicLoading.hide();
@@ -955,7 +955,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
 
@@ -1044,7 +1044,7 @@ angular.module('saratoga.controllers', [])
                     console.log(error);
                     $ionicPopup.alert({
                         title: 'Error',
-                        template: error
+                        template: error.statusText || $rootScope.errorMSG
                     });
                 });
         }
@@ -1233,7 +1233,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $ionicLoading.hide();
@@ -1282,7 +1282,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -1321,7 +1321,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $ionicLoading.hide();
@@ -1361,7 +1361,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -1398,7 +1398,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $scope.$broadcast('scroll.refreshComplete');
@@ -1441,7 +1441,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -1464,7 +1464,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -1675,7 +1675,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
 
@@ -1726,7 +1726,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $scope.$broadcast('scroll.refreshComplete');
@@ -1888,7 +1888,7 @@ angular.module('saratoga.controllers', [])
                 console.log(error);
                 $ionicPopup.alert({
                     title: 'Error',
-                    template: error
+                    template: error.statusText || $rootScope.errorMSG
                 });
             })
         }
@@ -1940,7 +1940,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $scope.$broadcast('scroll.refreshComplete');
@@ -1972,7 +1972,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         });
     }
@@ -2009,7 +2009,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
         }).finally(function () {
             $scope.$broadcast('scroll.refreshComplete');
@@ -2049,7 +2049,7 @@ angular.module('saratoga.controllers', [])
             console.log(error);
             $ionicPopup.alert({
                 title: 'Error',
-                template: error
+                template: error.statusText || $rootScope.errorMSG
             });
 
         }).finally(function () {

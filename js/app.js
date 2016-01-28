@@ -64,6 +64,9 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 
 .run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
     $ionicPlatform.ready(function () {
+        
+        $rootScope.errorMSG = "Sorry, something went wrong";
+        
         native = $cordovaNativeAudio;
         $cordovaNativeAudio.preloadComplex('check', 'audio/beep.mp3', 1, 1)
             .then(function (msg) {

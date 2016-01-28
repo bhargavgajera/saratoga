@@ -241,12 +241,9 @@ input {font-family: "HelveticaNeue"; }
 
 .contact-detail { border:solid 1px #ccc; margin: 20px 0 20px;font-family: "HelveticaLTStd-Roman";}
 .contact-detail a { text-decoration:none;}
-.contact-detail .social a.icon { font-size: 14px; background:#7272B8; color: #fff; margin-bottom: 5px; display: inline-block; min-width: 23px; text-align: center; padding: 0 2px; float: left; margin:1px !important;}
+.contact-detail .social a.icon { font-size: 14px; background:#7272B8; color: #fff; margin-bottom: 5px; display: inline-block; min-width: 23px; text-align: center; padding:3px 2px 0; float: left; margin:1px !important;}
 
 .member_detail a { text-decoration: underline;}
-
-
-.platform-ios .contact-detail .social a.icon { padding:3px 2px 0;}
 
 .contact-detail .social a.icon img { width: 100%; max-width: 18px; height: auto; position: relative; top:1px;}
 .contact-detail .social a.text { font-size: 11px; background:#4E385E; color: #fff; width: auto; display: inline-block; margin-bottom: 5px; text-align: center; line-height: 15px; padding: 3px;}
