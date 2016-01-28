@@ -1968,12 +1968,12 @@ angular.module('saratoga.controllers', [])
     }
 })
 
-.controller('searchCtrl', function ($scope, $state, $rootScope, Data, $ionicLoading, $ionicPopup) {
+.controller('searchCtrl', function ($scope, $state, $rootScope, Data, $ionicLoading, $ionicPopup,$cordovaKeyboard) {
     $scope.formsubmit = false;
-    $scope.search = function (isvalid) {
+    $scope.search = function (searchForm) {
         $scope.formsubmit = false;
-        console.log(isvalid);
-        if (!isvalid) {
+        console.log(searchForm);
+        if (!searchForm.$valid) {
             $scope.popup = $ionicPopup.alert({
                 title: 'Search faild!',
                 template: 'Please input keyword to search!'
@@ -1981,7 +1981,7 @@ angular.module('saratoga.controllers', [])
             return false;
         }
 
-
+        // $cordovaKeyboard.close()
 
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'

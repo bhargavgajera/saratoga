@@ -168,7 +168,7 @@ input {font-family: "HelveticaNeue"; }
 .add-pic .person  .clip { font-size: 25px; position: absolute; right: 10px; bottom: 0px; z-index: 55; -webkit-transform:rotate(45deg); -ms-transform:rotate(45deg); transform:rotate(45deg)}
 
 
-.add-pic .userImage { width: 75px; height: 75px; display: inline-block;border:solid 3px #7272B8; border-radius: 50%; overflow: hidden;}
+.add-pic .userImage { width: 75px; height: 75px; display: inline-block;border:solid 3px #7272B8; border-radius: 50%; overflow: hidden; background-position:center; background-repeat: no-repeat; background-size: contain;}
 .add-pic .userImage img{ width: 100%; height: auto; }
 
 .icon.circle:before {border:solid 1px #7272b8; border-radius: 50%; font-size: 16px; width: 24px; height: 24px; line-height: 22px;}
@@ -221,7 +221,7 @@ input {font-family: "HelveticaNeue"; }
 .detail-page .padding-left-10 { padding-left: 10px;}
 .detail-page .padding-right-10 { padding-right: 10px;}
 .detail-page .content,.detail-page .item { text-align: left;}
-.mamber-pic { padding: 20px 0;}
+.mamber-pic { padding: 20px 10px;}
 .mamber-pic .image-wrapper{ width: 115px; height: 115px; border:solid 2px #fff; display: inline-block; border-radius: 50%; padding: 10px;}
 .mamber-pic .image-wrapper .image-block { width: 100%; height: 100%; background-color: #fff; border-radius: 50%; box-shadow: 0px 0px 5px rgba(0,0,0,.3); overflow: hidden; text-align: center; background-size: cover; background-repeat: no-repeat;}
 .mamber-pic .image-wrapper .image-block img { display: inline-block; vertical-align: middle; max-width: 100%; max-height: 100%;}
@@ -276,7 +276,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
 .setting-page {opacity: 0;  -webkit-transition:opacity .4s ease-in-out .5s;  transition:opacity .4s ease-in-out .5s; color: #606060;}
 .setting-page.loaded {opacity: 1;}
 .setting-page.nofade { opacity:1; -webkit-transition:none; transition:none; }
-
+.setting-page .item-toggle p { float: left; margin-right: 10px;}
 
 .weather-page { text-align: center; font-family: "HelveticaLTStd"; opacity: 0;  -webkit-transition:opacity .4s ease-in-out 1s;  transition:opacity .4s ease-in-out 1s; color: #606060;}
 .weather-page.loaded { opacity: 1;}

@@ -69,7 +69,7 @@
                             <div class="col col-50"><a href="#" class="calm" ng-click="openLink(redirecturl+'referral?member={{memberId}}')" target="_blank">{{memberData.weburl}}</a></div>
                          
                         </div>
-                        <div class="row social">
+                        <div class="row social" ng-if="memberData.social_site">
                             <div class="col col-50">Social :</div>
                             <div class="col col-50">
                                 <a href="#" ng-click="openLink('{{memberData.social_site.facebook}}')" ng-if="memberData.social_site.facebook" target="_blank" class="icon ion-social-facebook"></a>

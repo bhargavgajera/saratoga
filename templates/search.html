@@ -1,6 +1,6 @@
 c<ion-view title="Search" class="listing-page">
     <ion-header-bar class="bar bar-subheader search-box">
-        <form name="searchForm"  ng-submit="search(searchForm.$valid)" novalidate>
+        <form name="searchForm"  ng-submit="search(searchForm)" novalidate>
         <label class="item item-input" >
              
             <input type="text" name="searchtext" class="royal" placeholder="Search" ng-model="searchData"  required>
@@ -8,10 +8,7 @@ c<ion-view title="Search" class="listing-page">
         </label>
             </form>
     </ion-header-bar>
-
-
     <ion-content>
-        
         <ion-list>
             <ion-item class="item  item-icon-right item-text-wrap"   ng-repeat="list in searchresult" ng-href="{{list.page || '#/app/notifications'}}">
                     <!--<img ng-src="{{list.avtar || img/noimage.jpg}}" ng-class="{'has-image':list.event_thumb}">-->
