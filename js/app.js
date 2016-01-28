@@ -65,13 +65,11 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 .run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
     $ionicPlatform.ready(function () {
         native = $cordovaNativeAudio;
-        $cordovaNativeAudio.preloadComplex('beep', 'audio/swip.mp3',1,1)
+        $cordovaNativeAudio.preloadComplex('check', 'audio/beep.mp3', 1, 1)
             .then(function (msg) {
-              console.log("play success");
               console.log(msg);
             }, function (error) {
-              console.log("play error");
-              console.log(error);
+              console.error(error);
             });
             
         console.log("native audio")
@@ -90,7 +88,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     $cordovaVibration.vibrate(500);
                 }
                 if ($rootScope.settings.mobile[0].status) {
-                    $cordovaNativeAudio.play('beep');
+                    $cordovaNativeAudio.play('check');
                 }
             });
 
