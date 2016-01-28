@@ -169,7 +169,7 @@ input {font-family: "HelveticaNeue"; }
 
 
 .add-pic .userImage { width: 75px; height: 75px; display: inline-block;border:solid 3px #7272B8; border-radius: 50%; overflow: hidden; background-position:center; background-repeat: no-repeat; background-size: contain; position: relative;}
-.add-pic .userImage img{ width: 100%; height: auto; position: absolute; left: 0; top: 0; right: 0; bottom: 0; margin: 0 auto;}
+.add-pic .userImage img{ width: 100%; height: auto; position: absolute; left: 0; top: 50%; -webkit-transform: translateY(-50%);-ms-transform: translateY(-50%);transform: translateY(-50%);  margin: 0 auto;}
 
 .icon.circle:before {border:solid 1px #7272b8; border-radius: 50%; font-size: 16px; width: 24px; height: 24px; line-height: 22px;}
 .form-register .select-wrapper{border-radius:0;-webkit-box-flex:1;-webkit-flex:1 195px;-moz-flex:1 195px;-ms-flex:1 195px;flex:1 195px;-webkit-appearance:none;-moz-appearance:none;appearance:none;margin:0;background-color:transparent; border:solid 1px #ccc; position: relative; margin-right: 24px;}

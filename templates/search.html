@@ -1,11 +1,11 @@
 c<ion-view title="Search" class="listing-page">
     <ion-header-bar class="bar bar-subheader search-box">
         <form name="searchForm"  ng-submit="search(searchForm)" novalidate>
-        <label class="item item-input" >
+        <div class="item item-input" >
              
-            <input type="text" name="searchtext" class="royal" placeholder="Search" ng-model="searchData"  required>
-            <button class="button icon ion-search button-royal" type="submit"></button>
-        </label>
+            <input type="text" name="searchtext" class="royal" placeholder="Search" ng-model="searchData"  tabindex="1" required>
+            <button class="button icon ion-search button-royal" tabindex="2" type="submit"></button>
+        </div>
             </form>
     </ion-header-bar>
     <ion-content>

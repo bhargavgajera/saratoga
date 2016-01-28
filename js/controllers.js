@@ -701,8 +701,12 @@ angular.module('saratoga.controllers', [])
     
     $scope.updateScreen = function(status)
     {
-        $scope.showcomment = status;
-        $ionicScrollDelegate.resize();
+       if ($scope.showcomment != status )
+        {
+            $scope.showcomment = status;
+            $ionicScrollDelegate.resize();
+            $ionicScrollDelegate.scrollTop(true);
+        }
     }
     
     // Open our new task modal
@@ -999,8 +1003,14 @@ angular.module('saratoga.controllers', [])
     
     $scope.updateScreen = function(status)
     {
-        $scope.showcomment = status;
-        $ionicScrollDelegate.resize();
+        
+        if ($scope.showcomment != status )
+        {
+            $scope.showcomment = status;
+            $ionicScrollDelegate.resize();
+            $ionicScrollDelegate.scrollTop(true);
+        }
+        
     }
 
     $scope.videoUrl = function (link) {
@@ -1981,7 +1991,7 @@ angular.module('saratoga.controllers', [])
             return false;
         }
 
-        // $cordovaKeyboard.close()
+       // $cordovaKeyboard.close()
 
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'

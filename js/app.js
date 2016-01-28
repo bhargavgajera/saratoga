@@ -64,10 +64,18 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
 
 .run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
     $ionicPlatform.ready(function () {
-        $cordovaNativeAudio.preloadSimple('beep', 'audio/swip.mp3');
-
+        native = $cordovaNativeAudio;
+        $cordovaNativeAudio.preloadSimple('beep', 'audio/swip.mp3').preloadSimple('click', 'audio/click.mp3')
+            .then(function (msg) {
+              console.log("play success");
+              console.log(msg);
+            }, function (error) {
+              console.log("play error");
+              console.log(error);
+            });
+            
         console.log("native audio")
-
+        console.log($cordovaNativeAudio);
 
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
