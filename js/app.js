@@ -227,7 +227,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         navigator.notification.beep(1)
                     }
                     
-                    if (notification.payload.page != "") {
+                    if (notification.payload.page != "" && typeof notification.payload.page !== "undefined" ) {
                         document.location.hash = notification.payload.page;
                     } else if (window.localStorage.getItem("userData") != null) {
                         document.location.hash = "#/app/notifications";
