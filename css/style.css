@@ -99,7 +99,7 @@ input {font-family: "HelveticaNeue"; }
 .bold-text { font-weight: bold}
 .uppercase { text-transform: uppercase;}
 .list mark{ background: none;}
-.badge { min-width: 23px; text-align: center;align-items: center;justify-content: center;}
+.badge { min-width: 23px; text-align: center;-webkit-box-align: center;-webkit-align-items: center;-ms-flex-align: center;-ms-grid-row-align: center;align-items: center;-webkit-box-pack: center;-webkit-justify-content: center;-ms-flex-pack: center;justify-content: center;}
 .title .badge  { position: relative; top: -6px;}
 .slider { height: 100%; text-align: center}
 .align-right { text-align: right;}

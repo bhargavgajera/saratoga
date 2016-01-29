@@ -567,17 +567,8 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
             params: object
         }).then(function (results) {
             return results.data;
-        }),function (error) {
-            $ionicLoading.hide();
-            console.log(error);
-            $ionicPopup.alert({
-                title: 'Error',
-                template: error.statusText || $rootScope.errorMSG
-            });
-        }
-    
-    };
-    
+        });
+    }
 
     obj.put = function (q, object) {
         return $http.put(serviceBase + q, object).then(function (results) {
