@@ -1643,7 +1643,7 @@ angular.module('saratoga.controllers', [])
 
     root = $rootScope;
     scope = $scope;
-    $scope.lists = [];
+    $scope.lists = null;
 
 
     $scope.day = moment();
@@ -1716,9 +1716,9 @@ angular.module('saratoga.controllers', [])
             user: $rootScope.userData.id
         }).then(function (result) {
             $ionicLoading.hide();
-            $scope.lists = result.events;
+            $scope.lists = result.events || [];
             console.log($scope.lists)
-            $rootScope.events = result.events;
+            $rootScope.events = result.events || [];
             console.log(result.events);
             $rootScope.setCalendar()
         }, function (error) {

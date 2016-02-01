@@ -41,13 +41,13 @@
                             <i class="icon" ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[list.favorite]"></i>
                         </ion-option-button>
                     </ion-item>
-                    </div>     
+                    </div> 
+                    <ion-item class="item" ng-show="(lists | filter:checkList).length < 1">
+                             <h3>There are no favorites events available</h3>
+                         </ion-item>
+                            
                 </ion-list>
-
-
-
             </div>
         </ion-content>
-
     </ion-pane>
 </ion-view>

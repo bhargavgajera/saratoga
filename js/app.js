@@ -118,7 +118,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
     
     var iosConfig = {
             "badge": false,
-            "sound": false,
+            "sound": true,
             "alert": true,
     };
 
@@ -222,12 +222,12 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                     console.log("test");
                     console.log(notification);
                     
-                    if ($rootScope.settings.mobile[1].status) {
+                    /*if ($rootScope.settings.mobile[1].status) {
                         $cordovaVibration.vibrate(500);
                     }
                     if ($rootScope.settings.mobile[0].status) {
                         navigator.notification.beep(1)
-                    }
+                    }*/
                     
                     if (notification.payload.page != "" && typeof notification.payload.page !== "undefined" ) {
                         document.location.hash = notification.payload.page;
@@ -287,7 +287,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                         title: 'Notification',
                         template: notification.alert
                     });
-                }*/
+                }
                 
                 if ($rootScope.settings.mobile[1].status) {
                         $cordovaVibration.vibrate(500);
@@ -300,7 +300,8 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
                 if (notification.sound) {
                    // var snd = new Media(event.sound);
                    // snd.play();
-                }
+                }*/
+                
 
                 if (notification.badge) {
                     $cordovaPush.setBadgeNumber(notification.badge).then(function (result) {
