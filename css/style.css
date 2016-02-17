@@ -383,23 +383,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', end
   display: inline-block;
   vertical-align: middle;
 }
-.calendar > div.header > i {
+.calendar > div.header > button {
   width: 40px;
   font-size: 1.125em;
   font-weight: bold;
   position: absolute;
   padding: 0 10px;
   cursor: pointer;
-  
+  color: #fff;
+  text-align: center;
+    
 }
-.calendar > div.header > i.left {
+
+.calendar > div.header > button:before { font-size: 18px; line-height: 40px; margin-top: -5px; }
+.calendar > div.header > button.left:before { margin-left: 3px;}
+.calendar > div.header > button.right:before { margin-right: 3px;}
+
+.calendar > div.header > button.left {
   text-align: left;
-  left: 10px;
+  left: 0px;
 }
-.calendar > div.header > i.right {
+.calendar > div.header > button.right {
   text-align: right;
-  margin-left: -40px;
-    right: 10px;
+  margin-left: -30px;
+  right: 0px;
 }
 .calendar > div.header > span {
   float: left;

@@ -9,10 +9,12 @@
             <div class="calender-page" ng-class="{loaded:'loaded'}">
                 <div class="calendar">
                     <div class="header">
-                        <i class="left icon ion-chevron-left ng-hide" ng-click="previous()" ng-hide="month.isSame(day,'month')" ></i>
+                       <button class="left button button-icon icon ion-chevron-left button-small" ng-click="previous()" ng-hide="month.isSame(day,'month')" ></button>
+                       
                         
                         <span>{{month.format("MMMM, YYYY")}}</span>
-                        <i class="right icon ion-chevron-right" ng-click="next()"></i>
+                        <button class="right button button-icon icon ion-chevron-right button-small"  ng-click="next()"></button>
+                        
                     </div>
                     <div class="week names">
                         <button class="day">Sun</button>
@@ -43,7 +45,7 @@
                     </ion-item>
                     </div> 
                     <ion-item class="item" ng-show="(lists | filter:checkList).length < 1">
-                             <h3>There are no favorites events available</h3>
+                             <h3>There are no favorite events available</h3>
                          </ion-item>
                             
                 </ion-list>

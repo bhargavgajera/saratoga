@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-register">
                     <label class="item item-input ">
-                        <span class="input-label"><strong>User Name<em class="assertive">*</em></strong></span>
+                        <span class="input-label"><strong>User Name</strong></span>
                         <input type="text" ng-model="data.uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" name="uname" disabled required>
                         <div class="msg" ng-show="userForm.$submitted || userForm.uname.$touched">
                             <i ng-hide="userForm.uname.$error.required || userForm.uname.$error.minlength || userForm.uname.$error.maxlength || userForm.uname.$error.pattern" class="icon ion-checkmark-round  balanced"></i>
@@ -23,12 +23,8 @@
                         </div>
                     </label>
                     <label class="item item-input">
-                        <span class="input-label"><strong>First Name<em class="assertive">*</em></strong></span>
-                        <input type="text" ng-model="data.fname" name="fname" required>
-                        <div class="msg" ng-show="userForm.$submitted || userForm.fname.$touched">
-                            <i ng-hide="userForm.fname.$error.required" class="icon ion-checkmark-round  balanced"></i>
-                            <i ng-show="userForm.fname.$error.required" class="icon ion-close-round assertive"></i>
-                        </div>
+                        <span class="input-label"><strong>First Name</strong></span>
+                        <input type="text" ng-model="data.fname" name="fname" >
                     </label>
 
                     <label class="item item-input ">
@@ -68,7 +64,7 @@
                     </label>
 
                     <label class="item item-input ">
-                        <span class="input-label"><strong>Country<em class="assertive">*</em></strong></span>
+                        <span class="input-label"><strong>Country</strong></span>
                         <div class="select-wrapper">
                             <select class="icon" name="country" ng-model="data.country">
                                 <option value="">Select your Country</option>
@@ -319,13 +315,7 @@
                                 <option value="Zaire">Zaire</option>
                                 <option value="Zambia">Zambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
-
                             </select><i class="icon ion-arrow-down-b"></i> </div>
-
-                        <div class="msg" ng-show="userForm.$submitted || userForm.country.$touched">
-                            <i ng-hide="!data.country" class="icon ion-checkmark-round  balanced"></i>
-                            <i ng-show="!data.country" class="icon ion-close-round assertive"></i>
-                        </div>
                     </label>
 
 
@@ -333,7 +323,7 @@
 
             </ion-content>
             <div class="bar bar-footer register-footer">
-                <button class="button button-royal button-full no-margin no-radius" ng-disabled="!userForm.$valid || (data.password != data.cpassword) || !data.country " type="submit"><strong class="uppercase">Update Profile</strong></button>
+                <button class="button button-royal button-full no-margin no-radius" ng-disabled="!userForm.$valid || (data.password != data.cpassword) " type="submit"><strong class="uppercase">Update Profile</strong></button>
             </div>
         </form>
     </ion-pane>

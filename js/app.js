@@ -1,7 +1,7 @@
 //var SitePath = 'http://developmentbox.co/saratoga/';
 //var SitePath = 'http://dev.discoversaratoga.org/';
-//var SitePath = 'http://discoversaratoga.org/live/';
-var SitePath = 'http://discoversaratoga.org/';
+var SitePath = 'http://discoversaratoga.org/live/';
+//var SitePath = 'http://discoversaratoga.org/'; 
 
 var root = null;
 
@@ -99,7 +99,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
     })
 })
 
-.run(function ($cordovaPush, $rootScope, $state, $ionicPopup, $cordovaNetwork, $cordovaPush, $cordovaDevice,$cordovaVibration) {
+.run(function ($cordovaPush, $rootScope, $state, $ionicPopup, $cordovaNetwork, $cordovaPush, $cordovaDevice,$cordovaVibration,$timeout) {
 
     console.log("$cordovaDevice")
     console.log($cordovaDevice)
@@ -133,14 +133,17 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
         
         Popup = $ionicPopup
         
-        var myPopup;
+        
         $rootScope.$on('$cordovaNetwork:online', function (event, networkState) {
             console.log("online");
             console.log(event);
             console.log(networkState);
 
-            if (typeof myPopup != "undefined") {
-                myPopup.close();
+            if (typeof $rootScope.popup != "undefined") {
+                 $timeout(function() {
+                $rootScope.popup.close();
+              }, 1000);
+                
             }
         });
 
@@ -149,27 +152,30 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
             console.log(event);
             console.log(networkState);
 
-            if (typeof myPopup != "undefined") {
-                myPopup.close();
+            if (typeof $rootScope.popup != "undefined") {
+                $rootScope.popup.close();
             }
-            myPopup = $ionicPopup.show({
-                template: 'Sorry, no Internet Connectivity detected. Please reconnect and try again.',
-                title: '<h4 class="positive">No Internet Connection</h4>',
-                cssClass: 'internetError',
-                buttons: [
-                    {
-                        text: 'Retry',
-                        type: 'button-royal',
-                        onTap: function (e) {
-                            if ($cordovaNetwork.isOffline()) {
-                                e.preventDefault();
+            
+             $timeout(function (){
+                 $rootScope.popup = $ionicPopup.show({
+                    template: 'Sorry, no Internet Connectivity detected. Please reconnect and try again.',
+                    title: '<h4 class="positive">No Internet Connection</h4>',
+                    cssClass: 'internetError',
+                    buttons: [
+                        {
+                            text: 'Retry',
+                            type: 'button-royal',
+                            onTap: function (e) {
+                                if ($cordovaNetwork.isOffline()) {
+                                    e.preventDefault();
+                                }
                             }
-                        }
-               },
-             ]
-            });
-
-            myPopup.then(function (res) {
+                   },
+                 ]
+                });
+             }, 200);
+            
+            $rootScope.popup.then(function (res) {
                 console.log('Tapped!', res);
             });
         });
