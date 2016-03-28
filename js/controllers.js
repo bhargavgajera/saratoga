@@ -436,6 +436,7 @@ angular.module('saratoga.controllers', [])
 
 .controller('profileCtrl', function ($scope, $ionicActionSheet, $cordovaCamera, Data, $ionicPopup, $state, $cordovaFileTransfer, $rootScope, $ionicLoading, $ionicViewService,$ionicScrollDelegate) {
  
+    scope = $scope;
     var userData = $rootScope.userData;
     $scope.uploaded = false;
     $scope.data = {};
@@ -492,6 +493,7 @@ angular.module('saratoga.controllers', [])
                     var image = document.getElementById('myImage');
                     image.src = imageData;
                     $scope.imagePath = imageData;
+                    $scope.oldimage = imageData;
                 }, function (error) {
                     console.log(error);
                     $rootScope.popup = $ionicPopup.alert({
@@ -584,6 +586,8 @@ angular.module('saratoga.controllers', [])
         Data.get("api/user/get_userinfo", {
             user_id: userId,
         }).then(function (result) {
+            console.log("getinfo");
+            console.log(result);
                 $ionicLoading.hide();
                 if (result.status == "ok") {
                     window.localStorage.setItem("userData", JSON.stringify(result));

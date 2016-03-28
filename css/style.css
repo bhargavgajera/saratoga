@@ -105,6 +105,8 @@ input {font-family: "HelveticaNeue"; }
 .align-right { text-align: right;}
 .align-center { text-align: center;}
 
+.ion-ios-star.yellow:before {color: yellow;}
+
 .custom-icon.spinner{fill:#fff;stroke:#fff;}
 .tab-item .icon.fa:before { position: relative; top: 5px;}
 

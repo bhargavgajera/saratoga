@@ -14,7 +14,7 @@
                 </div>
                 <div class="button-bar padding-left-10 padding-right-10">
                     <a class="button icon-top ion-ios-people button-royal no-radius no-border">{{memberData.total_favorite}} Followers</a>
-                    <a class="button icon-top button-calm no-border " ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[memberData.favorite]" ng-click="checkfav()">Favorite</a>
+                    <a class="button icon-top button-calm no-border yellow" ng-class="{true:'ion-ios-star', false:'ion-ios-star-outline'}[memberData.favorite]" ng-click="checkfav()">Favorite</a>
                     <a class="button icon-top ion-ios-location button-royal no-radius no-border" ng-click="gotoMap(memberData.lat,memberData.lng,memberData.title,memberData.address)">Map</a>
                 </div>
 
