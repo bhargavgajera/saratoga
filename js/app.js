@@ -1,7 +1,7 @@
 //var SitePath = 'http://developmentbox.co/saratoga/';
 //var SitePath = 'http://dev.discoversaratoga.org/';
-var SitePath = 'http://discoversaratoga.org/live/';
-//var SitePath = 'http://discoversaratoga.org/';
+//var SitePath = 'http://discoversaratoga.org/live/';
+var SitePath = 'http://discoversaratoga.org/';
 //var SitePath = 'http://sctb.wpengine.com/';
 
 
