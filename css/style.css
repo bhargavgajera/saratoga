@@ -159,7 +159,7 @@ input {font-family: "HelveticaNeue"; }
 .form-register { padding-bottom: 40px;}
 .form-register .input-label { color: #000;}
 .form-register .item-input { padding-right: 16px;}
-.form-register .item-input input[disabled] { color:#888; }
+.form-register .item-input input[disabled] { color:#555; }
 .form-register .checkbox input:before, .form-register .checkbox-icon:before{ border-color: #387EF5;}
 
 

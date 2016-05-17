@@ -134,7 +134,7 @@ angular.module('saratoga.controllers', [])
             }
         }, function (error) {
             $ionicLoading.hide();
-            $rootScope.popup.close();
+            //$rootScope.popup.close();
             console.log(error);
             $rootScope.popup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -736,7 +736,6 @@ angular.module('saratoga.controllers', [])
 
 
     $scope.checkDate = function (date, index) {
-
         if (index == 0) {
             $scope.oldDate = ""
         };

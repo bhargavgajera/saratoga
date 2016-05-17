@@ -30,7 +30,7 @@
                         <input type="text" ng-model="data.lname" value="&nbsp" name="lname">
                     </label>
 
-                    <label class="item item-input ">
+                    <label class="item item-input required-item">
                         <span class="input-label"><strong>Email<em class="assertive">*</em></strong></span>
                         <input type="email" ng-model="data.email" name="email" required>
                         <div class="msg" ng-show="userForm.$submitted || userForm.email.$touched">
@@ -38,7 +38,7 @@
                             <i ng-show="userForm.email.$error.email || userForm.email.$error.required" class="icon ion-close-round assertive"></i>
                         </div>
                     </label>
-                    <label class="item item-input ">
+                    <label class="item item-input required-item">
                         <span class="input-label"><strong>User Name<em class="assertive">*</em></strong></span>
                         <input type="text" ng-model="data.uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" name="uname" required>
                         <div class="msg" ng-show="userForm.$submitted || userForm.uname.$touched">
@@ -48,7 +48,7 @@
                         </div>
                     </label>
 
-                    <label class="item item-input">
+                    <label class="item item-input required-item">
                         <span class="input-label"><strong>Password<em class="assertive">*</em></strong></span>
                         <input type="password" ng-model="data.password" ng-minlength="6" ng-maxlength="20" name="password" required>
                         <div class="msg" ng-show="userForm.$submitted || userForm.password.$touched">
@@ -56,7 +56,7 @@
                             <i ng-show=" userForm.password.$error.required || userForm.password.$error.minlength || userForm.password.$error.maxlength" class="icon ion-close-round assertive"></i>
                         </div>
                     </label>
-                    <label class="item item-input ">
+                    <label class="item item-input required-item">
                         <span class="input-label"><strong>Confirm<em class="assertive">*</em></strong></span>
                         <input type="password" ng-model="data.cpassword" ng-minlength="5" ng-maxlength="15" name="cpassword" required>
                         <span class="padding-right" ng-hide="userForm.$submitted || userForm.cpassword.$touched">again</span>
