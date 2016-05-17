@@ -129,8 +129,8 @@ input {font-family: "HelveticaNeue"; }
 
 .button.underline { text-decoration: underline;}
 .slider-pager .slider-pager-page { color: #fff; opacity: 1; filter: alpha(opacity=100);}
-.slider-pager i:before { content: ""; }
-.slider-pager .active i:before { content: ""}
+.slider-pager i:before { content: ""; }
+.slider-pager .active i:before { content: ""}
 
 
 .login-page .list{text-align: center;}
@@ -159,7 +159,7 @@ input {font-family: "HelveticaNeue"; }
 .form-register { padding-bottom: 40px;}
 .form-register .input-label { color: #000;}
 .form-register .item-input { padding-right: 16px;}
-.form-register .item-input input[disabled] { color:#555; }
+.form-register .item-input input[disabled] { color:#555; opacity:1; }
 .form-register .checkbox input:before, .form-register .checkbox-icon:before{ border-color: #387EF5;}
 
 
