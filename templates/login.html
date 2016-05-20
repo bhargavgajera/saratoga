@@ -13,8 +13,8 @@ s<ion-view title="Log In">
                 <div id="listTable"></div>
                 <div class="form-login">
                      <form name="loginForm"  ng-submit="login(loginForm.$valid)" novalidate>
-                    <label class="item item-input icon-user" ng-class="{error:(loginForm.uname.$error.required || loginForm.uname.$error.minlength || loginForm.uname.$error.maxlength || loginForm.uname.$error.pattern),errorview :(loginForm.$submitted || loginForm.uname.$touched)}">
-                        <input type="text" placeholder="User Name" name="uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" ng-model="data.username" required>
+                    <label class="item item-input icon-user" ng-class="{error:loginForm.uname.$error.required ,errorview :(loginForm.$submitted || loginForm.uname.$touched)}">
+                        <input type="text" placeholder="User Name" name="uname"  ng-model="data.username" required>
                         <i class="icon ion-person royal"></i>
                     </label>
                     <label class="item item-input icon-password" ng-class="{error:loginForm.password.$error.required ,errorview :(loginForm.$submitted || loginForm.password.$touched)}">

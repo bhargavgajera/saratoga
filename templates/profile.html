@@ -15,12 +15,8 @@
                 <div class="form-register">
                     <label class="item item-input ">
                         <span class="input-label"><strong>User Name</strong></span>
-                        <input type="text" ng-model="data.uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" name="uname" disabled required>
-                        <div class="msg" ng-show="userForm.$submitted || userForm.uname.$touched">
-                            <i ng-hide="userForm.uname.$error.required || userForm.uname.$error.minlength || userForm.uname.$error.maxlength || userForm.uname.$error.pattern" class="icon ion-checkmark-round  balanced"></i>
-
-                            <i ng-show=" userForm.uname.$error.required  || userForm.uname.$error.minlength || userForm.uname.$error.maxlength || userForm.uname.$error.pattern" class="icon ion-close-round assertive"></i>
-                        </div>
+                        <input type="text" ng-model="data.uname" name="uname" disabled >
+                        
                     </label>
                     <label class="item item-input">
                         <span class="input-label"><strong>First Name</strong></span>

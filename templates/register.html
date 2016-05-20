@@ -40,11 +40,11 @@
                     </label>
                     <label class="item item-input required-item">
                         <span class="input-label"><strong>User Name<em class="assertive">*</em></strong></span>
-                        <input type="text" ng-model="data.uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9]*$/" name="uname" required>
+                        <input type="text" ng-model="data.uname" ng-minlength="5" ng-maxlength="15" ng-pattern="/^[a-zA-Z0-9.\-_]{4,16}$/" name="uname" required>
                         <div class="msg" ng-show="userForm.$submitted || userForm.uname.$touched">
-                            <i ng-hide="userForm.uname.$error.required || userForm.uname.$error.minlength || userForm.uname.$error.maxlength || userForm.uname.$error.pattern" class="icon ion-checkmark-round  balanced"></i>
+                            <i ng-hide="userForm.uname.$error.required || userForm.uname.$error.pattern" class="icon ion-checkmark-round  balanced"></i>
 
-                            <i ng-show=" userForm.uname.$error.required  || userForm.uname.$error.minlength || userForm.uname.$error.maxlength || userForm.uname.$error.pattern" class="icon ion-close-round assertive"></i>
+                            <i ng-show=" userForm.uname.$error.required  ||  userForm.uname.$error.pattern" class="icon ion-close-round assertive"></i>
                         </div>
                     </label>
 
