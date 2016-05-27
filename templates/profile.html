@@ -58,8 +58,16 @@
                             <i ng-show="userForm.cpassword.$error.required || userForm.cpassword.$error.minlength || userForm.cpassword.$error.maxlength || (data.password != data.cpassword)" class="icon ion-close-round assertive"></i>
                         </div>
                     </label>
-
-                    <label class="item item-input ">
+					<label class="item item-input ">
+                        <span class="input-label"><strong>State</strong></span>
+                        <input type="text" ng-model="data.state" value="&nbsp" name="state">
+                    </label>
+					
+					<label class="item item-input ">
+                        <span class="input-label"><strong>City</strong></span>
+                        <input type="text" ng-model="data.city" value="&nbsp" name="city">
+                    </label>
+                   <!--  <label class="item item-input ">
                         <span class="input-label"><strong>Country</strong></span>
                         <div class="select-wrapper">
                             <select class="icon" name="country" ng-model="data.country">
@@ -312,7 +320,7 @@
                                 <option value="Zambia">Zambia</option>
                                 <option value="Zimbabwe">Zimbabwe</option>
                             </select><i class="icon ion-arrow-down-b"></i> </div>
-                    </label>
+                    </label> -->
 
 
                 </div>

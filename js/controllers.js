@@ -7,12 +7,13 @@ angular.module('saratoga.controllers', [])
         template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
     });
 
-    Data.get("api/saratogaapp/homepage_display").then(function (result) {
+    Data.get("api/v2/saratogaapp/homepage_display").then(function (result) {
         $ionicLoading.hide();
         console.log(result);
         if (result.status == "ok") {
             $scope.slides = result.slides;
             $rootScope.slides = result.slides;
+			$rootScope.menus = result.menus;
             $ionicSlideBoxDelegate.update();
         } else {
             $rootScope.popup = $ionicPopup.alert({
@@ -30,7 +31,6 @@ angular.module('saratoga.controllers', [])
         });
     });
 })
-
 
 
 
@@ -108,7 +108,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get("api/user/signin", {
+        Data.get("api/v2/user/signin", {
             username: $scope.data.username,
             password: encrypt($scope.data.password,')pZdvNv2v@mh#cf'),
             deviceid: window.localStorage.getItem("regId"),
@@ -305,22 +305,24 @@ angular.module('saratoga.controllers', [])
         });
 
         Data.get("api/get_nonce", {
-            controller: 'user',
+            controller: 'user_v2',
             method: 'register',
         }).then(function (result) {
             console.log(result);
             if (result.status == "ok") {
-                Data.get("api/user/register", {
+                Data.get("api/v2/user/register", {
                     first_name: $scope.data.fname,
                     last_name: $scope.data.lname,
                     email: $scope.data.email,
                     username: $scope.data.uname,
                     user_pass: encrypt($scope.data.password,')pZdvNv2v@mh#cf'),
-                    country: $scope.data.country,
+                   // country: $scope.data.country,
                     nonce: result.nonce,
                     deviceid: window.localStorage.getItem("regId"),
                     devicetype: $rootScope.platform,
-                    version : '1.2.0'
+                    version : '1.2.0',
+					state : $scope.data.state,
+					city : $scope.data.city
 
                 }).then(function (result) {
                         console.log(result);
@@ -396,7 +398,7 @@ angular.module('saratoga.controllers', [])
 
     $scope.getuserInfo = function (userId) {
 
-        Data.get("api/user/get_userinfo", {
+        Data.get("api/v2/user/get_userinfo", {
             user_id: userId,
         }).then(function (result) {
                 $ionicLoading.hide();
@@ -451,7 +453,9 @@ angular.module('saratoga.controllers', [])
         uname: userData.username,
         password: "",
         cpassword: "",
-        country: userData.country
+        //country: userData.country,
+		state: userData.state,
+		city: userData.city,
     };
 
 
@@ -520,13 +524,15 @@ angular.module('saratoga.controllers', [])
         });
 
 
-        Data.get("api/user/update_profile", {
+        Data.get("api/v2/user/update_profile", {
             userid: $rootScope.userData.id,
             userfname: $scope.data.fname,
             userlname: $scope.data.lname,
             email: $scope.data.email,
             pasword: encrypt($scope.data.password,')pZdvNv2v@mh#cf'),
-            country: $scope.data.country,
+            //country: $scope.data.country,
+			state: $scope.data.state,
+			city: $scope.data.city,
             version : '1.2.0'
         }).then(function (result) {
                 console.log(result);
@@ -583,7 +589,7 @@ angular.module('saratoga.controllers', [])
     };
 
     $scope.getuserInfo = function (userId) {
-        Data.get("api/user/get_userinfo", {
+        Data.get("api/v2/user/get_userinfo", {
             user_id: userId,
         }).then(function (result) {
             console.log("getinfo");
@@ -634,7 +640,7 @@ angular.module('saratoga.controllers', [])
         template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
     });
 
-    Data.get('api/saratogaapp/get_event_detail', {
+    Data.get('api/v2/saratogaapp/get_event_detail', {
         event: $scope.eventId,
         user: $rootScope.userData.id
     }).then(function (result) {
@@ -671,7 +677,7 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.show({
                 template: 'Sending...'
             });
-            Data.get('api/saratogaapp/add_event_comment', {
+            Data.get('api/v2/saratogaapp/add_event_comment', {
                     comment: newComment,
                     event: $scope.eventId,
                     user: $rootScope.userData.id
@@ -796,7 +802,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/favorite_event', {
+        Data.get('api/v2/saratogaapp/favorite_event', {
             event: $scope.eventId,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -851,7 +857,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/get_members_categories').then(function (result) {
+        Data.get('api/v2/saratogaapp/get_members_categories').then(function (result) {
             $scope.categories = result.categories;
             $rootScope.categories = result.categories;
             $ionicLoading.hide();
@@ -914,7 +920,7 @@ angular.module('saratoga.controllers', [])
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
 
-        Data.get('api/saratogaapp/get_members', {
+        Data.get('api/v2/saratogaapp/get_members', {
             member_cat: $scope.catId,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -941,7 +947,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/favorite_member', {
+        Data.get('api/v2/saratogaapp/favorite_member', {
             member: Member.id,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -1020,7 +1026,7 @@ angular.module('saratoga.controllers', [])
             $ionicLoading.show({
                 template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
             });
-            Data.get('api/saratogaapp/add_comment', {
+            Data.get('api/v2/saratogaapp/add_comment', {
                     comment: newComment,
                     member: $scope.memberId,
                     user: $rootScope.userData.id
@@ -1079,7 +1085,7 @@ angular.module('saratoga.controllers', [])
         template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
     });
     
-    Data.get('api/saratogaapp/get_member_detail', {
+    Data.get('api/v2/saratogaapp/get_member_detail', {
         member: $scope.memberId,
         user: $rootScope.userData.id
     }).then(function (result) {
@@ -1103,7 +1109,7 @@ angular.module('saratoga.controllers', [])
     $scope.callNobounce = function () {
 
         if ($state.params.Id == $scope.memberId && $state.current.name == "app.member") {
-            Data.get('api/saratogaapp/member_not_bounce_rate', {
+            Data.get('api/v2/saratogaapp/member_not_bounce_rate', {
                 member: $scope.memberId
             }).then(function (result) {
                 console.log(result);
@@ -1152,7 +1158,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/favorite_member', {
+        Data.get('api/v2/saratogaapp/favorite_member', {
             member: $scope.memberId,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -1219,7 +1225,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/get_faviourites', {
+        Data.get('api/v2/saratogaapp/get_faviourites', {
             user: $rootScope.userData.id
         }).then(function (result) {
             $scope.favourites = result.favourites || [];
@@ -1262,7 +1268,7 @@ angular.module('saratoga.controllers', [])
             }
         }
 
-        Data.get('api/saratogaapp/favorite_' + type, parms).then(function (result) {
+        Data.get('api/v2/saratogaapp/favorite_' + type, parms).then(function (result) {
             $ionicLoading.hide();
             if (result.status == "ok") {
                 List.favorite = result.favorite
@@ -1302,7 +1308,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/get_connection', {
+        Data.get('api/v2/saratogaapp/get_connection', {
             user: $rootScope.userData.id,
         }).then(function (result) {
 
@@ -1329,7 +1335,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/connect_user', {
+        Data.get('api/v2/saratogaapp/connect_user', {
             connectto: connection.ID,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -1379,7 +1385,7 @@ angular.module('saratoga.controllers', [])
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
 
-        Data.get('api/saratogaapp/search_user', {
+        Data.get('api/v2/saratogaapp/search_user', {
             search_key: $scope.connectData,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -1422,7 +1428,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/get_settings', {
+        Data.get('api/v2/saratogaapp/get_settings', {
             user: $rootScope.userData.id
         }).then(function (result) {
             $ionicLoading.hide();
@@ -1447,7 +1453,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/set_settings', {
+        Data.get('api/v2/saratogaapp/set_settings', {
             user: $rootScope.userData.id,
             settings: $scope.settings
         }).then(function (result) {
@@ -1650,7 +1656,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/favorite_event', {
+        Data.get('api/v2/saratogaapp/favorite_event', {
             event: Event.id,
             user: $rootScope.userData.id
         }).then(function (result) {
@@ -1700,7 +1706,7 @@ angular.module('saratoga.controllers', [])
 
     $scope.doRefresh = function () {
 
-        Data.get('api/saratogaapp/get_eventlist', {
+        Data.get('api/v2/saratogaapp/get_eventlist', {
             user: $rootScope.userData.id
         }).then(function (result) {
             $ionicLoading.hide();
@@ -1841,7 +1847,7 @@ angular.module('saratoga.controllers', [])
 })
 
 
-.controller('notifyCtrl', function ($scope, $state, $rootScope, Data, $ionicLoading, $ionicPopup,$ionicScrollDelegate) {
+.controller('notifyCtrl', function ($scope, $state, $rootScope,$filter, Data, $ionicLoading, $ionicPopup,$ionicScrollDelegate) {
 
     root = $rootScope;
     scope = $scope;
@@ -1861,7 +1867,7 @@ angular.module('saratoga.controllers', [])
     $scope.readNotes = function (note) {
 
         if (!note.eventid && !note.is_read) {
-            Data.get('api/saratogaapp/read_notification', {
+            Data.get('api/v2/saratogaapp/read_notification', {
                 notificationid: note.notificationid,
                 userid: $rootScope.userData.id
             }).then(function (result) {
@@ -1888,6 +1894,38 @@ angular.module('saratoga.controllers', [])
         }
 
     }
+	
+	$scope.delNotes = function(note){
+		$ionicLoading.show({
+            template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
+        });
+		Data.get('api/v2/saratogaapp/delete_notification', {
+                notificationid: note.notificationid,
+                userid: $rootScope.userData.id
+            }).then(function (result) {
+                console.log(result);
+                if (result.status == "ok") {
+					$ionicLoading.hide()
+					var Index = $rootScope.notifications.indexOf(note);
+					$rootScope.notifications.splice(Index,1);
+					 $scope.checkBadge($rootScope.notifications);
+                  $rootScope.popup = $ionicPopup.alert({
+                    title: 'Notification deleted',
+                    template: 'Your natification has been deleted'
+                });  
+                   
+                }
+
+            }, function (error) {
+				
+                $ionicLoading.hide();
+                console.log(error);
+            $rootScope.popup = $ionicPopup.alert({
+                    title: 'Error',
+                    template: error.statusText || $rootScope.errorMSG
+                });
+            })
+	}
 
     $scope.checkBadge = function (notifications) {
         var cnt = 0;
@@ -1913,7 +1951,7 @@ angular.module('saratoga.controllers', [])
 
     $scope.doRefresh = function () {
 
-        Data.get('api/saratogaapp/get_all_notification', {
+        Data.get('api/v2/saratogaapp/get_all_notification', {
             userid: $rootScope.userData.id
         }).then(function (result) {
             console.log(result.timezoneoffset);
@@ -1949,7 +1987,7 @@ angular.module('saratoga.controllers', [])
     
 
     if (typeof $rootScope.settings == "undefined") {
-        Data.get('api/saratogaapp/get_settings', {
+        Data.get('api/v2/saratogaapp/get_settings', {
             user: $rootScope.userData.id
         }).then(function (result) {
             $ionicLoading.hide();
@@ -1985,7 +2023,7 @@ angular.module('saratoga.controllers', [])
         $ionicLoading.show({
             template: '<ion-spinner icon="lines" class="custom-icon"></ion-spinner>'
         });
-        Data.get('api/saratogaapp/get_search_resutl', {
+        Data.get('api/v2/saratogaapp/get_search_resutl', {
             search: $scope.searchData
         }).then(function (result) {
             console.log(result);
@@ -2018,7 +2056,7 @@ angular.module('saratoga.controllers', [])
 
 
     $scope.doRefresh = function () {
-        Data.get('api/saratogaapp/member_statistic', {
+        Data.get('api/v2/saratogaapp/member_statistic', {
             user: $rootScope.userData.id
         }).then(function (result) {
             console.log(result);

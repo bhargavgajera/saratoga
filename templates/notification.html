@@ -15,6 +15,7 @@ is_read}">
                     <img class="box-img" width="60" ng-class="{'read':list.	
 is_read}" ng-src="{{list.event_thumb}}" ng-if="list.event_thumb" alt="">
                     <i ng-if="list.pageurl" class="icon ion-ios-arrow-forward  assertive"></i>
+					<ion-option-button class="button-assertive" ng-click="delNotes(list)"><i class="icon ion-trash-a"></i></ion-option-button>
                 </ion-item>
                 <ion-item ng-show="notifications.length == 0 && ispasschange != 1 ">
                     <h3>No notification available</h3>

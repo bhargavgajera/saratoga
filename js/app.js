@@ -1,9 +1,9 @@
 //var SitePath = 'http://developmentbox.co/saratoga/';
 //var SitePath = 'http://dev.discoversaratoga.org/';
 //var SitePath = 'http://discoversaratoga.org/live/';
-var SitePath = 'http://discoversaratoga.org/';
-//var SitePath = 'https://sctb.staging.wpengine.com/';
-
+//var SitePath = 'http://discoversaratoga.org/';
+var SitePath = 'https://sctb.staging.wpengine.com/';
+//var SitePath = 'http://localhost/saratoga/';
 
 var root = null;
 
@@ -64,10 +64,52 @@ angular.module('ngIOS9UIWebViewPatch', ['ng']).config(['$provide', function($pro
 
 angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart.js','ngIOS9UIWebViewPatch'])
 
-.run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio) {
+.run(function ($ionicPlatform, $rootScope, $cordovaVibration, $cordovaNativeAudio,Data) {
     $ionicPlatform.ready(function () {
-        
-        $rootScope.errorMSG = "Sorry, something went wrong";
+		function getMenu()
+		{
+			Data.get('api/v2/saratogaapp/get_menus').then(function (result) {
+					 if (result.status == "ok") {
+					 $rootScope.menus = result.menus;
+					 var currentDate = new Date().getTime();
+					
+					  window.localStorage.setItem("menus",'{"date":'+currentDate+',"menu":'+JSON.stringify(result.menus)+',"miniute":'+JSON.stringify(result.duration)+'}');
+					} else {
+						$rootScope.popup = $ionicPopup.alert({
+							title: 'Error',
+							template: result.error
+						});
+					}
+				},function(error)
+				{
+					console.log(error);
+					$ionicLoading.hide();
+					$rootScope.popup.close();
+				});
+		}
+		
+		
+		
+		if (window.localStorage.getItem("menus") != null ) {
+			var Menus = JSON.parse(window.localStorage.menus);
+			var storedminutes = Menus.miniute;
+			var newDate = new Date().getTime();
+			var minutes = Math.round((newDate - Menus.date)/60000);
+			/* if (minutes > storedminutes)
+			{
+				getMenu();
+			}
+			else
+			{
+				$rootScope.menus = Menus.menu;
+			} */
+			getMenu();
+		} 
+		else
+		{
+			getMenu();
+		}
+		$rootScope.errorMSG = "Sorry, something went wrong";
         
         native = $cordovaNativeAudio;
         $cordovaNativeAudio.preloadComplex('check', 'audio/beep.mp3', 1, 1)
@@ -98,7 +140,54 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
             });
 
         }
-    })
+	})
+	 $ionicPlatform.on('resume', function(){
+         function getMenu()
+		{
+			Data.get('api/v2/saratogaapp/get_menus').then(function (result) {
+					 if (result.status == "ok") {
+					 $rootScope.menus = result.menus;
+					 var currentDate = new Date().getTime();
+					
+					  window.localStorage.setItem("menus",'{"date":'+currentDate+',"menu":'+JSON.stringify(result.menus)+',"miniute":'+JSON.stringify(result.duration)+'}');
+					} else {
+						$rootScope.popup = $ionicPopup.alert({
+							title: 'Error',
+							template: result.error
+						});
+					}
+				},function(error)
+				{
+					console.log(error);
+					$ionicLoading.hide();
+					$rootScope.popup.close();
+				});
+		}
+		
+		
+		
+		if (window.localStorage.getItem("menus") != null ) {
+			var Menus = JSON.parse(window.localStorage.menus);
+			var storedminutes = Menus.miniute;
+			var newDate = new Date().getTime();
+			var minutes = Math.round((newDate - Menus.date)/60000);
+			/* if (minutes > storedminutes)
+			{
+				getMenu();
+			}
+			else
+			{
+				$rootScope.menus = Menus.menu;
+			} */
+			getMenu();
+		} 
+		else
+		{
+			getMenu();
+		}
+    });	
+	
+	
 })
 
 .run(function ($cordovaPush, $rootScope, $state, $ionicPopup, $cordovaNetwork, $cordovaPush, $cordovaDevice,$cordovaVibration,$timeout) {
@@ -596,6 +685,7 @@ angular.module('saratoga', ['ionic', 'saratoga.controllers', 'ngCordova', 'chart
         var newString = $sanitize(text).replace(regex, "onClick=\"window.open('$1', '_system', 'location=yes')\"");
         return $sce.trustAsHtml(newString);
     }
-});
+})
+
 
 
