@@ -2,7 +2,7 @@
 //var SitePath = 'http://dev.discoversaratoga.org/';
 //var SitePath = 'http://discoversaratoga.org/live/';
 //var SitePath = 'http://discoversaratoga.org/';
-var SitePath = 'https://sctb.staging.wpengine.com/';
+var SitePath = 'http://sctb.staging.wpengine.com/';
 //var SitePath = 'http://localhost/saratoga/';
 
 var root = null;
