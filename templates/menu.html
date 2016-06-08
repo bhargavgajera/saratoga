@@ -27,10 +27,23 @@
                     <img width="35" height="35" ng-src="{{Avatar || img/noimage.jpg}}">
                     {{displayName}}
                 </a>
-                 <ion-item ng-repeat="menu in menus" menu-close class="item item-icon-left" ng-href="{{menu.menu_url}}">
+				
+				<ion-item class="item item-icon-left item-complex" menu-close="" ng-repeat="menu in menus">
+				<a class="item-content " ng-href="{{menu.menu_url}}" ng-if="menu.menu_type" >
+                    <i ng-class="menu.icon_class" class="icon"></i> {{menu.title}} 
+                </a>
+				
+				<a class="item-content" ng-click="openLink('{{menu.menu_url}}')" ng-if="!menu.menu_type" >
+                    <i ng-class="menu.icon_class" class="icon"></i> {{menu.title}}
+                </a>
+				</ion-item>
+				
+                <!--  <ion-item ng-repeat="menu in menus" menu-close class="item item-icon-left" ng-href="{{(menu.menu_type)? menu.menu_url : ''}}" ng-click="{{(!menu.menu_type)? 'openLink('+ menu.menu_url + ')' : ''}}">
                     <i class="icon" ng-class="menu.icon_class"></i> 
                     {{menu.title}} 
-                </ion-item>
+                </ion-item> -->
+				
+
                 
                 
                  <ion-item menu-close class="item item-icon-left" ng-click="logout()">
